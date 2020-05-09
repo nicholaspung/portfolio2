@@ -1,19 +1,18 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+const BlogList = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Portfolio and Mumblings" />
-      <Bio />
-      <h3 style={{ borderBottom: "1px solid black" }}>Projects</h3>
+      <SEO title="All posts" />
+      <h2>Blog Posts</h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -47,7 +46,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default BlogList
 
 export const pageQuery = graphql`
   query {
@@ -57,9 +56,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: {
-        frontmatter: { template: { eq: "project" }, draft: { ne: true } }
-      }
+      filter: { frontmatter: { template: { eq: "blog" }, draft: { ne: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -73,12 +70,7 @@ export const pageQuery = graphql`
             title
             description
             draft
-            slug
-            tags
-            template
-            category
           }
-          html
         }
       }
     }
