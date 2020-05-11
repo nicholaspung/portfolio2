@@ -2,6 +2,25 @@ import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
 
+const buttonStyles = css`
+  background: white;
+  border: none;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  margin: 0.5rem;
+  &:hover {
+    color: blue;
+  }
+`
+
+const liStyles = css`
+  margin: 1rem;
+`
+
+const linkStyles = css`
+  box-shadow: none;
+`
+
 const Header = ({ title }) => (
   <header
     css={css`
@@ -23,6 +42,9 @@ const Header = ({ title }) => (
           color: black;
           text-decoration: none;
           border-bottom: 1px solid black;
+          &:hover {
+            color: blue;
+          }
         `}
       >
         {title}
@@ -37,38 +59,14 @@ const Header = ({ title }) => (
         margin: 0;
       `}
     >
-      <li
-        css={css`
-          margin: 0;
-        `}
-      >
-        <Link to={`/about`}>
-          <button
-            css={css`
-              background-color: white;
-              border: none;
-              border-bottom: 1px solid black;
-            `}
-          >
-            About Me
-          </button>
+      <li css={liStyles}>
+        <Link to={`/about`} css={linkStyles}>
+          <button css={buttonStyles}>About Me</button>
         </Link>
       </li>
-      <li
-        css={css`
-          margin: 0;
-        `}
-      >
-        <Link to={`/blog`}>
-          <button
-            css={css`
-              background-color: white;
-              border: none;
-              border-bottom: 1px solid black;
-            `}
-          >
-            Blog
-          </button>
+      <li css={liStyles}>
+        <Link to={`/blog`} css={linkStyles}>
+          <button css={buttonStyles}>Blog</button>
         </Link>
       </li>
     </ul>

@@ -10,12 +10,12 @@ const Layout = ({ title, children }) => {
         marginLeft: `auto`,
         marginRight: `auto`,
         maxWidth: rhythm(30),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        padding: `${rhythm(0.5)} ${rhythm(3 / 4)}`,
       }}
     >
       <Header title={title} />
       <main>{children}</main>
-      <footer>
+      <footer style={{ textAlign: "center" }}>
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
