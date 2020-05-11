@@ -10,6 +10,7 @@ const buttonStyles = css`
   margin: 0.5rem;
   &:hover {
     color: blue;
+    border-bottom: 0;
   }
 `
 
@@ -41,7 +42,6 @@ const Header = ({ title }) => (
         css={css`
           color: black;
           text-decoration: none;
-          border-bottom: 1px solid black;
           &:hover {
             color: blue;
           }

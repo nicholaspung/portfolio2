@@ -52,16 +52,29 @@ export default [
   },
   {
     title: "Your Toolbox",
-    date: "2020-05-20",
+    date: "2020-04-20",
     draft: false,
     category: ["Javascript", "React", "Firebase"],
     github: "https://github.com/nicholaspung/productivity-app",
     website: "https://productivity-app-dev.firebaseapp.com",
     description:
-      "Your Toolbox is a habit tracker and todo list. Other technologies used are: Emotion, Firebase Auth, Firebase Cloud Firestore, PWA",
+      "Your Toolbox is a habit tracker and todo list. The goal for this project was to create a light-weight version of Habitica which only contained essential features that I used. Other technologies used are: Emotion, Firebase Auth, Firebase Cloud Firestore, PWA",
     picture: {
       src: "./prod-valid.png",
       alt: "Picture of front page for Prod VaLid",
+    },
+  },
+  {
+    title: "MD Writer",
+    date: "2020-5-20",
+    draft: false,
+    category: ["Javascript", "Electron"],
+    github: "https://github.com/nicholaspung/md-writer",
+    description:
+      "MD Writer is a text editor that displays how markup is displayed. The goal of this project was to create a light-weight application for me to write blog posts for my website. ",
+    picture: {
+      src: "",
+      alt: "",
     },
   },
 ]

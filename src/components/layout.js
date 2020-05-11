@@ -16,7 +16,8 @@ const Layout = ({ title, children }) => {
       <Header title={title} />
       <main>{children}</main>
       <footer style={{ textAlign: "center" }}>
-        © {new Date().getFullYear()}, Built with
+        <br />
+        <br />© {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>
