@@ -4,12 +4,12 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blog = path.resolve(`./src/pages/blog.js`)
+  // const blog = path.resolve(`./src/pages/blog.js`)
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const about = path.resolve(`./src/pages/about.js`)
+  // const about = path.resolve(`./src/pages/about.js`)
 
-  createPage({ path: `/about`, component: blog })
-  createPage({ path: `/about`, component: about })
+  // createPage({ path: `/about`, component: blog })
+  // createPage({ path: `/about`, component: about })
 
   const result = await graphql(
     `
@@ -17,6 +17,9 @@ exports.createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
+          filter: {
+            frontmatter: { draft: { ne: true }, template: { eq: "blog" } }
+          }
         ) {
           edges {
             node {
@@ -25,6 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                draft
               }
             }
           }

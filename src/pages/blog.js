@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { css } from "@emotion/core"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,7 +13,13 @@ const BlogList = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <h2>Blog Posts</h2>
+      <h2
+        css={css`
+          border-bottom: 1px solid black;
+        `}
+      >
+        Blog Posts
+      </h2>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (

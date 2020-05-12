@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -15,9 +15,10 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Portfolio and Mumblings" />
       <Bio />
-      <h3 style={{ borderBottom: "1px solid black" }}>Projects</h3>
+      <h2 style={{ borderBottom: "1px solid black" }}>Projects</h2>
       {projects
         .filter(project => !project.draft)
+        .sort((a, b) => b.order - a.order)
         .map(project => (
           <ProjectSnippet project={project} />
         ))}

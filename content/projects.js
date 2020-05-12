@@ -12,6 +12,7 @@ export default [
       src: "./dashboard-b.png",
       alt: "Picture of SwaggerUI documentation",
     },
+    order: 2,
   },
   {
     title: "Emaily",
@@ -35,6 +36,7 @@ export default [
       alt:
         "⬆️ (Top Half) Surveys Sent Dashboard | ⬇️ (Bottom Half) Sending out a survey",
     },
+    order: 1,
   },
   {
     title: "Prod VaLid",
@@ -49,6 +51,7 @@ export default [
       src: "./prod-valid.png",
       alt: "Picture of front page for Prod VaLid",
     },
+    order: 3,
   },
   {
     title: "Your Toolbox",
@@ -63,10 +66,12 @@ export default [
       src: "./prod-valid.png",
       alt: "Picture of front page for Prod VaLid",
     },
+    order: 4,
+    slug: "your-toolbox",
   },
   {
     title: "MD Writer",
-    date: "2020-5-20",
+    date: "2020-05-20",
     draft: false,
     category: ["Javascript", "Electron"],
     github: "https://github.com/nicholaspung/md-writer",
@@ -76,5 +81,7 @@ export default [
       src: "",
       alt: "",
     },
+    order: 5,
+    slug: "md-writer",
   },
 ]

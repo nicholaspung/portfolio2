@@ -26,9 +26,12 @@ const Header = ({ title }) => (
   <header
     css={css`
       display: flex;
-      flex-direction: row;
       align-items: center;
       margin: 2rem 0;
+      flex-direction: column;
+      @media only screen and (min-width: 700px) {
+        flex-direction: row;
+      }
     `}
   >
     <h3

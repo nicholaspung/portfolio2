@@ -12,7 +12,13 @@ const About = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="About" />
-      <h2>{about.frontmatter.title}</h2>
+      <h2
+        css={css`
+          border-bottom: 1px solid black;
+        `}
+      >
+        {about.frontmatter.title}
+      </h2>
       <div
         css={css`
           ul {
