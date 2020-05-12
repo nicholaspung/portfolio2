@@ -53,7 +53,7 @@ const Bio = () => {
         }}
       />
       <p>
-        I'm a front end developer building useful applications. I also
+        I'm a full-stack developer building useful applications. I also
         occasionally write about learnings from projects I've finished and entry
         level philosophy.
       </p>

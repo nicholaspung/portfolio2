@@ -1,6 +1,6 @@
 ---
 title: Your Toolbox | Learnings
-date: "2020-05-20T22:40:32.169Z"
+date: "2020-04-20T22:40:32.169Z"
 description: "I had been using Habitica as my habit tracker for quite some time, but I got sick of the extra pop-ups and gaming aspects of the application as I didn't use those features. When I decided to pursue programming, one of my goals was to build applications that I would use for myself, and re-building a Habitica clone that only had the features I would use was a great start."
 template: "blog"
 draft: false
