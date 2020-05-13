@@ -53,10 +53,14 @@ const Bio = () => {
         }}
       />
       <p>
-        Hi 👋 I'm Nicholas. I'm a full-stack developer, who likes to build
-        random products. I'm extremely interested in integrating health with
+        Hi{" "}
+        <span role="img" aria-label="wave-hands">
+          👋
+        </span>{" "}
+        I'm Nicholas. I'm a full-stack developer, who likes to build projects to
+        use day-to-day. I'm extremely interested in integrating health with
         software, so my primary focus is on learning how to use hardware and
-        software to drive human behavior in a positive light.
+        software to drive human behavior in a positive direction.
       </p>
     </div>
   )

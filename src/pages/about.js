@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { css } from "@emotion/core"
 
@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 const About = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const about = data.allMarkdownRemark.edges[0].node
+  // const [infoToggle, setInfoToggle] = useState(false)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -27,6 +28,26 @@ const About = ({ data, location }) => {
         `}
         dangerouslySetInnerHTML={{ __html: about.html }}
       />
+      {/* <div>
+        <button
+          onClick={() => setInfoToggle(!infoToggle)}
+          css={css`
+            background: white;
+            border: none;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 0.5rem;
+            &:hover {
+              color: blue;
+              border-bottom: 0;
+            }
+          `}
+        >
+          Click here to learn about how I got into software development.
+        </button>
+        {infoToggle && <p>Hi</p>}
+      </div> */}
     </Layout>
   )
 }
