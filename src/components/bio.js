@@ -53,9 +53,10 @@ const Bio = () => {
         }}
       />
       <p>
-        I'm a full-stack developer building useful applications. I also
-        occasionally write about learnings from projects I've finished and entry
-        level philosophy.
+        Hi 👋 I'm Nicholas. I'm a full-stack developer, who likes to build
+        random products. I'm extremely interested in integrating health with
+        software, so my primary focus is on learning how to use hardware and
+        software to drive human behavior in a positive light.
       </p>
     </div>
   )

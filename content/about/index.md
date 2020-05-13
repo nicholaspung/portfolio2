@@ -24,3 +24,4 @@ I work as a full-time web developer at Vegas.com and studying computer science f
 - Automatic Farm
 - Nutrition and health app
 - Integrating a Pomodoro style timer into Habit Tracker
+- Scheduler that emails links to articles and stories I like to follow

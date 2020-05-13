@@ -13,7 +13,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Portfolio and Mumblings" />
+      <SEO title="Portfolio" />
       <Bio />
       <h2 style={{ borderBottom: "1px solid black" }}>Projects</h2>
       {projects
