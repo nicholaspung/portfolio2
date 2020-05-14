@@ -8,6 +8,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { css } from "@emotion/core"
 
 import { rhythm } from "../utils/typography"
 
@@ -16,7 +17,21 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 80, height: 80) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      github: file(absolutePath: { regex: "/github-logo.png/" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      linkedin: file(absolutePath: { regex: "/linkedin.png/" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -34,25 +49,75 @@ const Bio = () => {
   const { author } = data.site.siteMetadata
   return (
     <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
+      css={css`
+        display: flex;
+        align-items: center;
+        margin-bottom: ${rhythm(2.5)};
+      `}
     >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author.name}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
-      <p>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-right: ${rhythm(1 / 2)};
+        `}
+      >
+        <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author.name}
+          style={{
+            marginBottom: 0,
+            minWidth: 50,
+            borderRadius: `100%`,
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        />
+        <div
+          css={css`
+            display: flex;
+            justify-content: space-around;
+            margin: 0.25rem;
+            width: 100%;
+          `}
+        >
+          <a
+            href="https://github.com/nicholaspung"
+            target="_blank"
+            rel="noopener noreferrer"
+            css={css`
+              box-shadow: none;
+            `}
+          >
+            <Image
+              fixed={data.github.childImageSharp.fixed}
+              alt={`Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>`}
+            />
+          </a>
+          <a
+            href="https://linkedin.com//in/nicholas-pung"
+            target="_blank"
+            rel="noopener noreferrer"
+            css={css`
+              box-shadow: none;
+            `}
+          >
+            <Image
+              fixed={data.linkedin.childImageSharp.fixed}
+              alt={`Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>`}
+              style={{ filter: "grayscale(100%)" }}
+            />
+          </a>
+        </div>
+      </div>
+      <p
+        css={css`
+          margin: 0;
+        `}
+      >
         Hi{" "}
         <span role="img" aria-label="wave-hands">
           👋

@@ -20,7 +20,7 @@ const BlogIndex = ({ data, location }) => {
         .filter(project => !project.draft)
         .sort((a, b) => b.order - a.order)
         .map(project => (
-          <ProjectSnippet project={project} />
+          <ProjectSnippet project={project} key={project.title} />
         ))}
     </Layout>
   )

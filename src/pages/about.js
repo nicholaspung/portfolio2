@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { css } from "@emotion/core"
 
@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const About = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const about = data.allMarkdownRemark.edges[0].node
-  // const [infoToggle, setInfoToggle] = useState(false)
+  // const [infoToggle, setInfoToggle] = React.useState(false)
 
   return (
     <Layout location={location} title={siteTitle}>
