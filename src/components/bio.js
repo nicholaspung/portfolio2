@@ -17,21 +17,21 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 80, height: 80) {
+          fixed(width: 50, height: 50) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       github: file(absolutePath: { regex: "/github-logo.png/" }) {
         childImageSharp {
-          fixed(width: 30, height: 30) {
+          fixed(width: 25, height: 25) {
             ...GatsbyImageSharpFixed
           }
         }
       }
       linkedin: file(absolutePath: { regex: "/linkedin.png/" }) {
         childImageSharp {
-          fixed(width: 30, height: 30) {
+          fixed(width: 25, height: 25) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -51,7 +51,7 @@ const Bio = () => {
     <div
       css={css`
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         margin-bottom: ${rhythm(2.5)};
       `}
     >
