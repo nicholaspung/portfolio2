@@ -113,20 +113,35 @@ const Bio = () => {
           </a>
         </div>
       </div>
-      <p
+      <div
         css={css`
-          margin: 0;
+          display: flex;
+          flex-direction: column;
         `}
       >
-        Hi{" "}
-        <span role="img" aria-label="wave-hands">
-          👋
-        </span>{" "}
-        I'm Nicholas. I'm a full-stack developer, who likes to build projects to
-        use day-to-day. I'm extremely interested in integrating health with
-        software, so my primary focus is on learning how to use hardware and
-        software to drive human behavior in a positive direction.
-      </p>
+        <p
+          css={css`
+            text-align: center;
+            margin-bottom: 0.25rem;
+          `}
+        >
+          Hi{" "}
+          <span role="img" aria-label="wave-hands">
+            👋
+          </span>{" "}
+          I'm Nicholas.
+        </p>
+        <p
+          css={css`
+            margin: 0;
+          `}
+        >
+          I'm a full-stack developer, who likes to build projects to use
+          day-to-day. I'm extremely interested in integrating health with
+          software, so my primary focus is on learning how to use hardware and
+          software to drive human behavior in a positive direction.
+        </p>
+      </div>
     </div>
   )
 }
