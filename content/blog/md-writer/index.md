@@ -1,5 +1,5 @@
 ---
-title: MD Writer | Learnings
+title: MD Writer | Case Study
 date: "2020-05-20T22:40:32.169Z"
 description: "Inspired by Derek Sivers, I decided to create a lightweight text editor that rendered markdown while you write that would only rely on your OS. I chose markdown because even if it becomes unsupported, there's little difference between .txt files and .md files. I chose Electron because it would be a different technology I hadn't learned yet, and also because I didn't want to waste extra time learning a different programming language to build a desktop application."
 template: "blog"

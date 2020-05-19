@@ -9,18 +9,7 @@ const ProjectSnippet = ({ project }) => (
         margin: 0;
       `}
     >
-      {project.slug ? (
-        <Link
-          to={`/blog/${project.slug}`}
-          css={css`
-            box-shadow: none;
-          `}
-        >
-          {project.title}
-        </Link>
-      ) : (
-        <>{project.title}</>
-      )}
+      {project.title}
     </h3>
     <p
       css={css`
@@ -51,7 +40,11 @@ const ProjectSnippet = ({ project }) => (
         </a>
       </li>
       {project.website && (
-        <li>
+        <li
+          css={css`
+            margin: 0 2rem 0 0;
+          `}
+        >
           Website:{" "}
           <a
             href={`${project.website}`}
@@ -60,6 +53,23 @@ const ProjectSnippet = ({ project }) => (
           >
             Link
           </a>
+        </li>
+      )}
+      {project.slug && (
+        <li
+          css={css`
+            margin: 0 2rem 0 0;
+          `}
+        >
+          Case Study:{" "}
+          <Link
+            to={`/blog/${project.slug}`}
+            css={css`
+              box-shadow: 0 1px 0 0 #007acc;
+            `}
+          >
+            Link
+          </Link>
         </li>
       )}
     </ul>

@@ -61,7 +61,7 @@ export default [
     github: "https://github.com/nicholaspung/productivity-app",
     website: "https://productivity-app-dev.firebaseapp.com",
     description:
-      "Your Toolbox is a habit tracker and todo list. The goal for this project was to create a light-weight version of Habitica which only contained essential features that I used. Other technologies used are: Emotion, Firebase Auth, Firebase Cloud Firestore, PWA",
+      "Your Toolbox is a habit tracker and to-do list. The goal for this project was to create a light-weight version of Habitica which only contained essential features that I used. Other technologies used are: Emotion, Firebase Auth, Firebase Cloud Firestore, PWA",
     picture: {
       src: "./prod-valid.png",
       alt: "Picture of front page for Prod VaLid",

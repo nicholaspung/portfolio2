@@ -17,7 +17,7 @@ I work as a full-time web developer at Vegas.com and studying computer science f
 - [Akimbo: A Podcast from Seth Godin](https://www.akimbo.link/)
 - [WorkLife with Adam Grant](https://www.ted.com/podcasts/worklife)
 
-### Future project ideas include:
+### _Future_ project ideas include:
 
 - An Anki clone written in Javascript that also includes a studying feature
 - Displaying a personal dashboard to an E -Ink display
