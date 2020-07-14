@@ -29,16 +29,53 @@ const ProjectSnippet = ({ project }) => (
         margin: 0;
       `}
     >
-      <li
-        css={css`
-          margin: 0 2rem 0 0;
-        `}
-      >
-        Github:{" "}
-        <a href={`${project.github}`} target="_blank" rel="noopener noreferrer">
-          Link
-        </a>
-      </li>
+      {typeof project.github === "string" ? (
+        <li
+          css={css`
+            margin: 0 2rem 0 0;
+          `}
+        >
+          Github:{" "}
+          <a
+            href={`${project.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Link
+          </a>
+        </li>
+      ) : (
+        <>
+          <li
+            css={css`
+              margin: 0 2rem 0 0;
+            `}
+          >
+            Github - Front End:{" "}
+            <a
+              href={`${project.github[0]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+          </li>
+          <li
+            css={css`
+              margin: 0 2rem 0 0;
+            `}
+          >
+            Github - Back End:{" "}
+            <a
+              href={`${project.github[1]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+          </li>
+        </>
+      )}
       {project.website && (
         <li
           css={css`

@@ -122,7 +122,7 @@ const Bio = () => {
       >
         <p
           css={css`
-            text-align: center;
+            text-align: left;
             margin-bottom: 0.25rem;
           `}
         >
@@ -137,10 +137,10 @@ const Bio = () => {
             margin: 0;
           `}
         >
-          I'm a full-stack developer, who likes to build projects to use
-          day-to-day. I'm extremely interested in integrating health with
-          software, so my primary focus is on learning how to use hardware and
-          software to drive human behavior in a positive direction.
+          I'm a full-stack developer, who builds projects to use day-to-day. I'm
+          extremely interested in integrating health with software, so my
+          primary focus is on learning how to use hardware and software to drive
+          human behavior in a positive direction.
         </p>
       </div>
     </div>

@@ -4,10 +4,9 @@ template: "about"
 ---
 
 I'm Nicholas Pung, a full-stack software developer who dabbles with nutrition and philosophy.
+I aim to build applications that are useful for myself and for others while being highly usable and highly actionable for the user.
 
-I aim to build applications that are useful for myself and for others who have the same idea as me.
-
-I work as a full-time web developer at Vegas.com and studying computer science fundamentals.
+I work as a full-time web developer at Vegas.com and am currently studying computer science fundamentals.
 
 ### Recommended Podcast Listens:
 
@@ -21,7 +20,7 @@ I work as a full-time web developer at Vegas.com and studying computer science f
 
 - An Anki clone written in Javascript that also includes a studying feature
 - Displaying a personal dashboard to an E -Ink display
-- Automatic Farm
+- Automatic Farm (utilizing IOT, sensors, and dashboards)
 - Nutrition and health app
 - Integrating a Pomodoro style timer into Habit Tracker
 - Scheduler that emails links to articles and stories I like to follow

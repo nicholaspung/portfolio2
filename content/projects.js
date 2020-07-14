@@ -38,21 +38,21 @@ export default [
     },
     order: 1,
   },
-  {
-    title: "Prod VaLid",
-    date: "2019-09-30",
-    draft: false,
-    category: ["Javascript", "React", "Redux", "Node", "Express", "PostgreSQL"],
-    github: "https://github.com/labs15-lambda-next/frontend",
-    website: "https://prod-valid.netlify.com/",
-    description:
-      "Prod VaLid is an application to validate problems through crowdsourcing. It was made in a team of 6 in 2 months, completing 2 product cycles. My main responsibilities were to design/code the front end UI, doing code reviews of other's code, and fixing functionality throughout the site.",
-    picture: {
-      src: "./prod-valid.png",
-      alt: "Picture of front page for Prod VaLid",
-    },
-    order: 3,
-  },
+  // {
+  //   title: "Prod VaLid",
+  //   date: "2019-09-30",
+  //   draft: false,
+  //   category: ["Javascript", "React", "Redux", "Node", "Express", "PostgreSQL"],
+  //   github: "https://github.com/labs15-lambda-next/frontend",
+  //   website: "https://prod-valid.netlify.com/",
+  //   description:
+  //     "Prod VaLid is an application to validate problems through crowdsourcing. It was made in a team of 6 in 2 months, completing 2 product cycles. My main responsibilities were to design/code the front end UI, doing code reviews of other's code, and fixing functionality throughout the site.",
+  //   picture: {
+  //     src: "./prod-valid.png",
+  //     alt: "Picture of front page for Prod VaLid",
+  //   },
+  //   order: 3,
+  // },
   {
     title: "Your Toolbox",
     date: "2020-04-20",
@@ -76,12 +76,40 @@ export default [
     category: ["Javascript", "Electron"],
     github: "https://github.com/nicholaspung/md-writer",
     description:
-      "MD Writer is a text editor that displays how markup is displayed. The goal of this project was to create a light-weight application for me to write blog posts for my website. ",
+      "MD Writer is a text editor that displays how markup is displayed. The goal of this project was to create a light-weight application for me to write blog posts for my website.",
     picture: {
       src: "",
       alt: "",
     },
     order: 5,
     slug: "md-writer",
+  },
+  {
+    title: "Distraction Free",
+    date: "2020-07-14",
+    draft: false,
+    category: [
+      "Javascript",
+      "Vue",
+      "VueX",
+      "Auth0",
+      "Node",
+      "Express",
+      "SQLite3",
+      "Swagger-UI",
+    ],
+    github: [
+      "https://github.com/nicholaspung/distraction-free-fe",
+      "https://github.com/nicholaspung/distraction-free-api",
+    ],
+    website: "https://nicholaspung.github.io/distraction-free-fe/",
+    description:
+      "Distraction Free is an application to help minimize the urge to check Reddit for posts that contain a particular title. The goal of this project was to create a minimally aethestic application to deter users from checking often, while also not feel left out by specific Reddit Posts.",
+    picture: {
+      src: "",
+      alt: "",
+    },
+    order: 6,
+    slug: "distraction-free",
   },
 ]
