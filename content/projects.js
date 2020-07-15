@@ -104,7 +104,7 @@ export default [
     ],
     website: "https://nicholaspung.github.io/distraction-free-fe/",
     description:
-      "Distraction Free is an application to help minimize the urge to check Reddit for posts that contain a particular title. The goal of this project was to create a minimally aethestic application to deter users from checking often, while also not feel left out by specific Reddit Posts.",
+      "Distraction Free is an application to help minimize the urge to check Reddit for posts that contain a particular title. The goal of this project was to create a minimally aesthetic application to deter users from checking often, while also not feeling left out by specific Reddit Posts.",
     picture: {
       src: "",
       alt: "",

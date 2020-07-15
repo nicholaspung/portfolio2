@@ -61,7 +61,7 @@ const Bio = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          margin-right: ${rhythm(1 / 2)};
+          margin: ${rhythm(1 / 2)};
         `}
       >
         <Image

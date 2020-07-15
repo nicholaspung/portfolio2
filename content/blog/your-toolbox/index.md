@@ -15,7 +15,7 @@ I had been using [Habitica](https://habitica.com/) as my habit tracker for quite
 I decided to use React and Firebase to create the application because:
 
 - React: I wanted to create the application as soon as possible and I'm most familiar with it
-- Firebase: I didn't want to deal with creating my own backend server with authentication and a database.
+- Firebase: I didn't want to deal with creating a backend server with authentication and a database.
 
 ## Reflections
 
