@@ -36,6 +36,7 @@ const Header = ({ title }) => (
   >
     <h3
       css={css`
+        ${"" /* flex: 1 0 25%; */}
         flex: 1 0 50%;
         margin: 0;
       `}
@@ -56,6 +57,7 @@ const Header = ({ title }) => (
     <ul
       css={css`
         list-style: none;
+        ${"" /* flex: 1 0 75%; */}
         flex: 1 0 50%;
         display: flex;
         justify-content: space-around;
@@ -67,6 +69,16 @@ const Header = ({ title }) => (
           <button css={buttonStyles}>About Me</button>
         </Link>
       </li>
+      {/* <li css={liStyles}>
+        <Link to={`/today-i-learned`} css={linkStyles}>
+          <button css={buttonStyles}>Today I Learned</button>
+        </Link>
+      </li>
+      <li css={liStyles}>
+        <Link to={`/book-review`} css={linkStyles}>
+          <button css={buttonStyles}>Book Review</button>
+        </Link>
+      </li> */}
       <li css={liStyles}>
         <Link to={`/blog`} css={linkStyles}>
           <button css={buttonStyles}>Blog</button>
