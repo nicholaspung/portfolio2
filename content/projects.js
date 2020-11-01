@@ -1,19 +1,19 @@
 export default [
-  {
-    title: "Dashboard API",
-    date: "2019-08-12",
-    draft: true,
-    category: ["Javascript", "Node", "Express", "Mongoose", "MongoDB"],
-    github: "https://github.com/nicholaspung/dashboard-backend",
-    website: "https://dashboard-backend-swagger-api.herokuapp.com/",
-    description:
-      "Dashboard API is the REST client for Dashboard. Current tools created are a todo list and a habit tracker. In addition to the technologies used, Dashboard API was built using PassportJS and SwaggerUI.",
-    picture: {
-      src: "./dashboard-b.png",
-      alt: "Picture of SwaggerUI documentation",
-    },
-    order: 2,
-  },
+  // {
+  //   title: "Dashboard API",
+  //   date: "2019-08-12",
+  //   draft: true,
+  //   category: ["Javascript", "Node", "Express", "Mongoose", "MongoDB"],
+  //   github: "https://github.com/nicholaspung/dashboard-backend",
+  //   website: "https://dashboard-backend-swagger-api.herokuapp.com/",
+  //   description:
+  //     "Dashboard API is the REST client for Dashboard. Current tools created are a todo list and a habit tracker. In addition to the technologies used, Dashboard API was built using PassportJS and SwaggerUI.",
+  //   picture: {
+  //     src: "./dashboard-b.png",
+  //     alt: "Picture of SwaggerUI documentation",
+  //   },
+  //   order: 2,
+  // },
   {
     title: "Emaily",
     date: "2019-07-12",
@@ -28,7 +28,7 @@ export default [
       "Passport",
     ],
     github: "https://github.com/nicholaspung/emaily",
-    website: "https://send-emaily-to-users.herokuapp.com/",
+    // website: "https://send-emaily-to-users.herokuapp.com/",
     description:
       "Emaily is an application for product owners to send out emails to users for feedback. In addition to the technologies used, Emaily was built using PassportJS, SendGrid API, Stripe API, Axios, React Router, MaterializeCSS.",
     picture: {
@@ -102,7 +102,7 @@ export default [
       "https://github.com/nicholaspung/distraction-free-fe",
       "https://github.com/nicholaspung/distraction-free-api",
     ],
-    website: "https://nicholaspung.github.io/distraction-free-fe/",
+    // website: "https://nicholaspung.github.io/distraction-free-fe/",
     description:
       "Distraction Free is an application to help minimize the urge to check Reddit for posts that contain a particular title. The goal of this project was to create a minimally aesthetic application to deter users from checking often, while also not feeling left out by specific Reddit Posts.",
     picture: {
@@ -111,5 +111,33 @@ export default [
     },
     order: 6,
     slug: "distraction-free",
+  },
+  {
+    title: "Productivity Hub",
+    date: "2020-08-25",
+    draft: false,
+    category: [
+      "Javascript",
+      "React",
+      "Redux",
+      "Firebase",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Swagger-UI",
+    ],
+    github: [
+      "https://github.com/nicholaspung/productivity-hub",
+      "https://github.com/nicholaspung/productivity-hub-api",
+    ],
+    website: "https://hub.myexperiment.life/",
+    description:
+      "An application that contains different productivity tools. Current tools implemented are a habit tracker and a post saver. The goal of this project is to consolidate all possible tools I personally use/want to create.",
+    picture: {
+      src: "",
+      alt: "",
+    },
+    order: 7,
+    slug: "productivity-hub",
   },
 ]

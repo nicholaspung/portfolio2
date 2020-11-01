@@ -6,7 +6,7 @@ template: "about"
 I'm Nicholas Pung, a full-stack software developer who dabbles with nutrition and philosophy.
 I aim to build applications that are useful for myself and others while being highly usable and highly actionable for the user.
 
-I work as a full-time web developer at Vegas.com and am currently studying computer science fundamentals.
+I work as a Software Engineer Intern at Blueberry Medical, a Y Combinator funded startup. On my downtime, I work on my personal project: [Productivity Hub](/blog/productivity-hub).
 
 ### Recommended Podcast Listens:
 
