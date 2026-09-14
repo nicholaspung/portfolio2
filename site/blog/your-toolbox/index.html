@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Toolbox | Case Study | Nicholas Pung</title>
+<meta name="description" content="I had been using Habitica as my habit tracker for quite some time, but I got sick of the extra pop-ups and gaming aspects of the application as I didn&#x27;t use those features. When I decided to pursue programming, one of my goals was to build applications that I would use for myself, and re-building a Habitica clone that only had the features I would use was a great start.">
+<link rel="canonical" href="https://www.nicholaspung.com/blog/your-toolbox/">
+<meta property="og:title" content="Your Toolbox | Case Study | Nicholas Pung">
+<meta property="og:description" content="I had been using Habitica as my habit tracker for quite some time, but I got sick of the extra pop-ups and gaming aspects of the application as I didn&#x27;t use those features. When I decided to pursue programming, one of my goals was to build applications that I would use for myself, and re-building a Habitica clone that only had the features I would use was a great start.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.nicholaspung.com/blog/your-toolbox/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/">Nicholas Pung<span>Software developer</span></a><nav aria-label="Main navigation"><a href="/">Portfolio</a><a href="/about/">About</a><a href="/blog/" aria-current="page">Blog</a></nav></header>
+<main id="main">
+<article class="prose"><header><a href="/blog/">← All posts</a><h1>Your Toolbox | Case Study</h1><p class="meta"><time datetime="2020-04-20">April 20, 2020</time></p></header><h2>Background</h2>
+<p>I had been using <a href="https://habitica.com/">Habitica</a> as my habit tracker for quite some time, but I got became tired of the extra pop-ups and gaming aspects of the application as I didn't use those features. When I decided to pursue programming, one of my goals was to build applications that I would use for myself, and re-building a Habitica clone that only had the features I would use was a great start.</p>
+<h2>What I Did</h2>
+<p>I decided to use React and Firebase to create the application because:</p>
+<ul>
+<li>React: I wanted to create the application as soon as possible and I'm most familiar with it</li>
+<li>Firebase: I didn't want to deal with creating a backend server with authentication and a database.</li>
+</ul>
+<h2>Reflections</h2>
+<ul>
+<li>Firebase for authentication was one of the easier processes when creating this project.</li>
+<li>Firebase Cloud Firestore was a little more difficult to use because of my focus on having the minimal read/writes to the database while also having to create documents that would have been a lot easier to handle with a relational database.</li>
+<li>React Context API seems to only be useful when you have a specific state for specific fields. If you want to grab a whole bunch of data together to display, there's a lot of prop-drilling that would not be necessary if using something like Redux.</li>
+</ul>
+<h2>Learnings</h2>
+<ul>
+<li>Refactoring takes a lot of time.</li>
+<li>Build an application with architecture in mind first. Thinking you can change your architecture while building your application will give you a bad time and make you spend a lot more time on the project than you wanted.</li>
+<li>Using Firebase for both authentication and database is easy. Using a NoSQL database for an application meant to use a SQL database makes logic rather difficult. Make sure you are using the right kind of database rather than what technology you want to use.</li>
+<li>Deciding between React Context API and Redux will depend on how big your application is and what you decide to do with it.</li>
+</ul><footer class="author"><p>Written by <a href="/about/">Nicholas Pung</a>.</p><p>I&#x27;m a full-stack developer, who builds projects to use day-to-day. I&#x27;m extremely interested in integrating health with software, so my primary focus is on learning how to use hardware and software to drive human behavior in a positive direction.</p></footer></article><nav class="post-nav" aria-label="More posts"><a rel="next" href="/blog/md-writer/">MD Writer | Case Study →</a></nav>
+</main>
+<footer class="site-footer"><span>© Nicholas Pung</span><nav aria-label="Social links"><a href="https://github.com/nicholaspung">GitHub</a><a href="https://www.linkedin.com/in/nicholas-pung">LinkedIn</a></nav></footer>
+</body>
+</html>
