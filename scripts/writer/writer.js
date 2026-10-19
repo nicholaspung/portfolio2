@@ -67,6 +67,7 @@
     if (!template) return;
     const data = values();
     const page = new DOMParser().parseFromString(template, 'text/html');
+    page.querySelector('.local-tools')?.remove();
     page.querySelector('h1').textContent = data.title;
     const article = page.querySelector('article.prose');
     const header = article.querySelector('header');

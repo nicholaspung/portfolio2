@@ -57,8 +57,8 @@ const stylesheets = [...home.toString().matchAll(/<link rel="stylesheet" href="(
 const css = Buffer.concat(await Promise.all(stylesheets.map(href => readFile(resolve(root, '.' + href)))));
 const gallery = await readFile(resolve(root, 'gallery.js'));
 assert.ok(gallery.length < 5000, 'Gallery JavaScript exceeds 5 kB budget');
-// Includes seven linked iPhone screenshots and the fullscreen viewer styling.
-assert.ok(home.length + css.length < 20000, 'Homepage + CSS exceeds 20 kB budget');
+// Includes three featured project cards, seven iPhone screenshots, and viewer styling.
+assert.ok(home.length + css.length < 21000, 'Homepage + CSS exceeds 21 kB budget');
 // Keep the fixed site small while allowing each editable case study room for a full article.
 assert.ok(total < 110000, 'Fixed site assets exceed 110 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');

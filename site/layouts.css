@@ -8,7 +8,7 @@
 .layout .intro p{max-width:64ch;margin:0;font-size:1rem;line-height:1.65}
 .layout .intro a{white-space:nowrap}
 .layout .section-heading{margin-top:0;padding-bottom:12px}
-.layout .project{padding:22px 0}
+.layout .project{padding:22px}
 .layout .project-heading{margin-bottom:10px;gap:4px 12px}
 .layout .project p{font-size:.9rem;line-height:1.65;margin-bottom:12px}
 .layout .project .tech{font-size:.75rem}
@@ -18,7 +18,7 @@
 .layout .screenshot-slides{order:-1}
 .layout .screenshot-controls{justify-content:center;gap:6px;margin:8px 0 0}
 .layout .screenshot-controls label{padding:5px 9px;font-size:.7rem;min-height:32px}
-.layout .screenshot-placeholder{aspect-ratio:16/10;background:color-mix(in srgb,var(--accent) 4%,var(--bg));border-style:solid}
+.layout .screenshot-placeholder{aspect-ratio:16/10;background:var(--surface-strong)}
 .layout .screenshot-placeholder>span:first-child{display:none}
 .layout .screenshot-placeholder .meta{font-size:.7rem}
 .layout .screenshot-slide img{aspect-ratio:16/10;object-fit:contain;background:var(--bg)}
@@ -33,21 +33,21 @@
 
 /* 2: small screenshot-led cards for the two featured projects. */
 .layout-2{max-width:940px}
-.layout-2 .intro{max-width:660px;margin:30px 0}
+.layout-2 .intro{margin:30px 0}
 .featured-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:20px 0 0}
-.layout-2 .featured{padding:16px;border:1px solid var(--line);border-radius:8px;min-width:0}
+.layout-2 .featured{padding:16px;min-width:0;margin-bottom:0}
 .layout-2 .featured .screenshots{margin-bottom:16px}
 .layout-2 .featured .screenshot-placeholder,.layout-2 .featured .screenshot-slide img{aspect-ratio:2/1}
 .layout-2 .featured .project-heading{display:block}
 .layout-2 .featured .project-heading h3{margin-bottom:4px}
 .layout-2 .featured .project-copy{display:flex;flex-direction:column}
-.layout-2 .remaining-projects .project:first-child{padding-top:26px}
+.layout-2 .remaining-projects{margin-top:20px}
 
 /* 3: compact rows, with optional screenshots in native disclosures. */
 .layout-3 .intro{display:flex;align-items:baseline;gap:24px;margin:26px 0}
 .layout-3 .intro h1{flex:0 0 180px;font-size:1.55rem}
 .layout-3 .intro p{font-size:.9rem}
-.layout-3 .project{padding:18px 0}
+.layout-3 .project{padding:18px}
 .layout-3 .project-heading{margin-bottom:6px}
 .layout-3 .project p{margin-bottom:10px}
 .layout-3 .project-preview{margin-top:10px}
