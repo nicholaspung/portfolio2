@@ -12,13 +12,16 @@ npm start
 
 Open http://localhost:8000. No `npm install` is needed. Edit a file in `site/` and refresh the browser. Any static web server can serve `site/` instead; Node is only used for optional development scripts.
 
+Compare homepage layout studies at `/1/` (tight stack with small previews beside the text), `/2/` (featured project cards), and `/3/` (compact list with expandable screenshots). Each has a layout switcher and uses `site/layouts.css`. The chosen project cards layout is the main homepage at `/`, with its styles in `site/home.css`. These are independent static snapshots of the homepage content, marked `noindex` and omitted from the sitemap. The total text-asset budget is 100 kB to include these three pages; the main homepage plus all its linked stylesheets still has a 16 kB limit.
+
 ## Edit content
 
 - `site/index.html`: introduction, portfolio entries, and screenshot carousel placeholders for Productivity and Yummy Recs.
 - `site/about/index.html`: biography, podcasts, and background.
 - `site/blog/index.html`: dated blog entries and descriptions.
 - `site/blog/<slug>/index.html`: complete article content and previous/next links.
-- `site/style.css`: all styling.
+- `site/style.css`: shared styling.
+- `site/home.css`: homepage layout and compact featured project cards.
 - `site/404.html`: custom not-found page.
 
 To add a post, copy an existing article directory, edit its content, title, description, canonical URL and Open Graph metadata, then add links to the blog index and homepage. Update neighboring previous/next links and `site/sitemap.xml`. The HTML files are the source of truth; there is no generator or Markdown processing step. Shared navigation/footer markup is deliberately repeated across this small set of pages.

@@ -45,6 +45,7 @@ p{margin:0 0 18px}
 .post-list article{padding:26px 0;border-bottom:1px solid var(--line)}
 .post-list h2{margin:5px 0 14px}
 .post-list .meta{margin:0}
+.post-list .post-date{text-align:right}
 .prose h2,.prose h3{margin:36px 0 16px}
 .prose header{margin-bottom:36px}
 .prose header>a{font-size:.85rem}

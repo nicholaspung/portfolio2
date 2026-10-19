@@ -44,9 +44,11 @@ for (const file of pages) {
   }
 }
 const home = await readFile(resolve(root, 'index.html'));
-const css = await readFile(resolve(root, 'style.css'));
+const stylesheets = [...home.toString().matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(([, href]) => href);
+const css = Buffer.concat(await Promise.all(stylesheets.map(href => readFile(resolve(root, '.' + href)))));
 assert.ok(home.length + css.length < 16000, 'Homepage + CSS exceeds 16 kB budget');
-assert.ok(total < 65000, 'Site exceeds 65 kB budget');
+// Includes three full homepage layout studies; the main homepage retains its 16 kB limit.
+assert.ok(total < 100000, 'Site exceeds 100 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');
 console.log(`Checked ${pages.length} HTML pages and all local links.`);
 console.log(`Site without screenshots: ${total} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). No browser JavaScript.`);
