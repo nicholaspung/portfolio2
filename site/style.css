@@ -23,10 +23,22 @@ p{margin:0 0 18px}
 .section-heading h2{margin:0}
 .section-heading>a{font-size:.85rem}
 .project{padding:26px 0;border-bottom:1px solid var(--line)}
+.project:last-child,.post-list article:last-child{border-bottom:0}
 .project-heading{margin-bottom:12px;flex-wrap:wrap;gap:4px 16px}
 .meta,.tech{font-size:.8rem;color:var(--muted)}
 .tech{margin-bottom:12px}
 .links{font-size:.85rem;gap:12px 22px}
+.screenshots{min-width:0;margin:20px 0;padding:0;border:0}
+.screenshots legend{padding:0;color:var(--muted);font-size:.8rem}
+.screenshot-controls{display:flex;gap:8px;margin:10px 0}
+.screenshot-controls label{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:4px;font-size:.85rem;cursor:pointer}
+.screenshot-controls label:has(:checked){border-color:var(--accent);color:var(--accent)}
+.screenshot-controls input{accent-color:var(--accent);margin:0}
+.screenshot-controls input:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.screenshot-slide{display:none}
+.screenshots:has(input[value="1"]:checked) .screenshot-slide:nth-child(1),.screenshots:has(input[value="2"]:checked) .screenshot-slide:nth-child(2),.screenshots:has(input[value="3"]:checked) .screenshot-slide:nth-child(3){display:block}
+.screenshot-placeholder{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--line);border-radius:4px;background:var(--bg)}
+.screenshot-slide img{display:block;width:100%;height:auto;border-radius:4px}
 .writing-list{list-style:none;padding:0;margin:0}
 .writing-list li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
 .writing-list .meta{white-space:nowrap}
@@ -41,7 +53,7 @@ p{margin:0 0 18px}
 .prose li>ul{margin-top:10px}
 .prose{overflow-wrap:break-word}
 .author{border-top:1px solid var(--line);margin-top:40px;padding-top:24px;color:var(--muted);font-size:.9rem}
-.post-nav{border-top:1px solid var(--line);padding-top:24px;margin-top:28px;font-size:.9rem;justify-content:space-between}
+.post-nav{padding-top:24px;margin-top:28px;font-size:.9rem;justify-content:space-between}
 .site-footer{margin-top:64px;padding:24px 0 32px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 .skip{position:absolute;top:8px;left:16px;padding:8px 16px;background:var(--bg);transform:translateY(-200%)}
 .skip:focus{transform:none}
