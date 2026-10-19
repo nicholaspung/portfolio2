@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, extname, sep } from 'node:path';
 
 const root = fileURLToPath(new URL('../site/', import.meta.url));
-const types = { '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.xml': 'application/xml', '.txt': 'text/plain' };
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.xml': 'application/xml', '.txt': 'text/plain' };
 const port = Number(process.env.PORT || 8000);
 createServer(async (req, res) => {
   try {

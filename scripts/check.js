@@ -27,7 +27,11 @@ for (const file of pages) {
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${file}: expected one h1`);
   assert.match(html, /<meta name="description"/);
   assert.match(html, /<main id="main">/);
-  assert.doesNotMatch(html, /<script\b|@import/i);
+  assert.doesNotMatch(html, /@import/i);
+  for (const [tag] of html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)) {
+    assert.equal(file, resolve(root, 'index.html'), 'Only the homepage needs browser JavaScript');
+    assert.equal(tag, '<script src="/gallery.js" defer></script>', 'Use the local gallery enhancement only');
+  }
   for (const [tag] of html.matchAll(/<img\b[^>]*>/gi)) {
     assert.match(tag, /\balt="[^"]+"/, `${file}: screenshots need descriptive alt text`);
     assert.match(tag, /\bsrc="\/(?!\/)[^"]+"/, `${file}: screenshots must use local assets`);
@@ -46,9 +50,12 @@ for (const file of pages) {
 const home = await readFile(resolve(root, 'index.html'));
 const stylesheets = [...home.toString().matchAll(/<link rel="stylesheet" href="([^"]+)"/g)].map(([, href]) => href);
 const css = Buffer.concat(await Promise.all(stylesheets.map(href => readFile(resolve(root, '.' + href)))));
-assert.ok(home.length + css.length < 16000, 'Homepage + CSS exceeds 16 kB budget');
-// Includes three full homepage layout studies; the main homepage retains its 16 kB limit.
-assert.ok(total < 100000, 'Site exceeds 100 kB budget');
+const gallery = await readFile(resolve(root, 'gallery.js'));
+assert.ok(gallery.length < 5000, 'Gallery JavaScript exceeds 5 kB budget');
+// Includes seven linked iPhone screenshots and the fullscreen viewer styling.
+assert.ok(home.length + css.length < 20000, 'Homepage + CSS exceeds 20 kB budget');
+// Includes three full homepage layout studies and the gallery enhancement.
+assert.ok(total < 110000, 'Site exceeds 110 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');
 console.log(`Checked ${pages.length} HTML pages and all local links.`);
-console.log(`Site without screenshots: ${total} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). No browser JavaScript.`);
+console.log(`Site without screenshots: ${total} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);
