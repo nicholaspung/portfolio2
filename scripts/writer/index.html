@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Local writing | Nicholas Pung</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/write/writer.css">
+<script src="/write/writer.js" defer></script>
+</head>
+<body>
+<header class="writer-header"><div><p class="eyebrow">Local workspace</p><h1>Write your case study.</h1><p>Write, preview, and save to your portfolio’s HTML files.</p></div><a href="/" target="_blank" rel="noopener">Open portfolio ↗</a></header>
+<main id="main">
+<div class="action-bar"><label class="project-label" for="project">Project<select id="project" disabled></select></label><div class="save-actions"><span id="state">Loading…</span><button id="save" class="primary" disabled>Save to website</button></div></div>
+<p id="feedback" role="status" aria-live="polite">The editor runs only on your computer. Saving changes local files; publishing is a separate step.</p>
+<div id="recovery" class="notice" hidden><span id="recovery-text"></span><div><button id="restore">Restore draft</button><button id="discard">Discard draft</button></div></div>
+<div class="view-tabs" role="group" aria-label="Workspace view"><button id="view-write" aria-pressed="true">Write</button><button id="view-preview" aria-pressed="false">Preview</button></div>
+<div class="workspace" data-view="write">
+<section class="writing-pane" aria-label="Case study editor">
+<div class="fields"><label for="title">Title</label><input id="title" maxlength="160" disabled><label for="summary">Summary <span>Used in the Blog listing and search previews</span></label><textarea id="summary" maxlength="500" rows="3" disabled></textarea><label class="checkbox"><input id="coming-soon" type="checkbox" disabled> Show “Case study coming soon”</label></div>
+<div class="body-heading"><label id="body-label">Article</label><button id="outline" disabled>Add an outline</button></div>
+<div class="toolbar" role="toolbar" aria-label="Article formatting">
+<select id="block" aria-label="Paragraph style" disabled><option value="p">Paragraph</option><option value="h2">Heading 2</option><option value="h3">Heading 3</option><option value="blockquote">Quote</option><option value="pre">Code block</option></select>
+<button data-command="bold" title="Bold (⌘/Ctrl+B)" aria-label="Bold" disabled><strong>B</strong></button><button data-command="italic" title="Italic (⌘/Ctrl+I)" aria-label="Italic" disabled><em>I</em></button><button data-command="insertUnorderedList" aria-label="Bulleted list" disabled>• List</button><button data-command="insertOrderedList" aria-label="Numbered list" disabled>1. List</button><button id="link" disabled>Link</button><button id="image" disabled>Image</button><button data-command="undo" aria-label="Undo" disabled>↶</button><button data-command="redo" aria-label="Redo" disabled>↷</button>
+</div>
+<div id="body" class="prose editor-body" contenteditable="false" role="textbox" aria-multiline="true" aria-labelledby="body-label" spellcheck="true"></div>
+<p class="hint">Paste brings in plain text. Use the toolbar to format it. Drafts are kept in this browser as you type. Save with ⌘S / Ctrl+S.</p>
+</section>
+<section class="preview-pane" aria-label="Live preview"><div class="preview-heading"><h2>Live preview</h2><div><button id="preview-size" aria-pressed="false">Phone width</button><a id="open-page" href="/blog/" target="_blank" rel="noopener">Open saved page ↗</a></div></div><div class="preview-canvas"><iframe id="preview" title="Case study preview" sandbox="allow-same-origin" tabindex="-1"></iframe></div><p class="hint">Uses your website’s actual page and styles. Preview links are disabled so you stay on your draft.</p></section>
+</div>
+<details class="workflow"><summary>Where does my writing go?</summary><p id="file-location"></p><p>Save also updates this project’s title, summary, and coming-soon status on the Blog page. Your portfolio card stays as you wrote it. Every save keeps the previous files in <code>.local/writer/backups/</code>.</p><p>To publish, use your normal Git and hosting workflow. This editor is excluded from the static build.</p></details>
+<noscript>This local editor needs JavaScript. You can also edit the case study HTML files directly.</noscript>
+</main>
+<dialog id="insert-dialog" aria-labelledby="insert-heading"><form id="insert-form"><div class="dialog-heading"><h2 id="insert-heading">Insert a link</h2><button id="cancel-insert" type="button" aria-label="Close insert dialog">×</button></div><div id="link-fields"><label for="link-text">Link text</label><input id="link-text"><label for="link-url">URL</label><input id="link-url" placeholder="https://example.com" autocomplete="off"></div><div id="image-fields" hidden><label for="image-path">Image</label><select id="image-path"></select><p class="hint">To add more images, place optimized PNG, JPEG, WebP, or AVIF files in <code>site/images/</code> and reload the editor. Keep each under 500 kB.</p><img id="image-preview" alt="Selected image preview" hidden><label for="image-alt">Image description</label><input id="image-alt" placeholder="Describe what the screenshot shows"><label for="image-caption">Caption (optional)</label><input id="image-caption"></div><p id="insert-error" role="alert"></p><button type="submit" class="primary">Insert</button></form></dialog>
+</body>
+</html>

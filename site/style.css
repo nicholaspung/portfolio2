@@ -60,3 +60,4 @@ p{margin:0 0 18px}
 .skip:focus{transform:none}
 @media(max-width:540px){body{padding:0 20px}.site-header{padding-top:28px;flex-direction:column;gap:18px;margin-bottom:40px}.writing-list li{flex-direction:column;gap:4px}.section-heading>.meta{display:none}.intro{margin-bottom:44px}}
 @media(prefers-color-scheme:dark){:root{--bg:#191c19;--ink:#eceee6;--muted:#a5aea1;--line:#383f36;--accent:#bbd6ac}}
+.prose img{display:block;max-width:100%;height:auto;max-height:760px;object-fit:contain}.prose figure{margin:28px 0}.prose figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}.prose pre{overflow:auto;white-space:pre-wrap;border:1px solid var(--line);padding:12px}.prose blockquote{margin-left:0;padding-left:18px;border-left:2px solid var(--line)}

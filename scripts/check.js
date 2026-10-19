@@ -13,12 +13,17 @@ const files = await walk(root);
 const pages = files.filter(f => f.endsWith('.html'));
 let total = 0;
 let imageTotal = 0;
+let caseStudyTotal = 0;
+const editableCases = new Set(['productivity', 'yummy-recs', 'data-desktop'].map(slug => resolve(root, 'blog', slug, 'index.html')));
 const imageTypes = new Set(['.png', '.jpg', '.jpeg', '.webp', '.avif']);
 for (const file of files) {
   const size = (await stat(file)).size;
   if (imageTypes.has(extname(file))) {
     assert.ok(size <= 512000, `${file}: screenshot exceeds 500 kB budget`);
     imageTotal += size;
+  } else if (editableCases.has(file)) {
+    assert.ok(size < 70000, `${file}: case study exceeds 70 kB budget`);
+    caseStudyTotal += size;
   } else total += size;
 }
 for (const file of pages) {
@@ -54,8 +59,8 @@ const gallery = await readFile(resolve(root, 'gallery.js'));
 assert.ok(gallery.length < 5000, 'Gallery JavaScript exceeds 5 kB budget');
 // Includes seven linked iPhone screenshots and the fullscreen viewer styling.
 assert.ok(home.length + css.length < 20000, 'Homepage + CSS exceeds 20 kB budget');
-// Includes three full homepage layout studies and the gallery enhancement.
-assert.ok(total < 110000, 'Site exceeds 110 kB budget');
+// Keep the fixed site small while allowing each editable case study room for a full article.
+assert.ok(total < 110000, 'Fixed site assets exceed 110 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');
 console.log(`Checked ${pages.length} HTML pages and all local links.`);
-console.log(`Site without screenshots: ${total} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);
+console.log(`Fixed site assets: ${total} bytes. Editable case studies: ${caseStudyTotal} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);
