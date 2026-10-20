@@ -1,6 +1,13 @@
 (() => {
   if (typeof HTMLDialogElement === 'undefined' || !HTMLDialogElement.prototype.showModal) return;
-  const galleries = document.querySelectorAll('.phone-gallery');
+  document.querySelectorAll('article.prose img').forEach(image => {
+    if (image.closest('a')) return;
+    const link = document.createElement('a');
+    link.href = image.dataset.full || image.src;
+    image.replaceWith(link);
+    link.append(image);
+  });
+  const galleries = [...document.querySelectorAll('.phone-gallery,article.prose')].filter(gallery => gallery.querySelector('a img'));
   if (!galleries.length) return;
 
   const viewer = document.createElement('dialog');
@@ -23,12 +30,21 @@
   let swipe;
   let scrollPosition = 0;
 
+  image.addEventListener('load', () => {
+    if (!viewer.open || navigator.connection?.saveData || /2g/.test(navigator.connection?.effectiveType || '')) return;
+    if (links.length > 1) [-1, 1].forEach(step => {
+      const preload = new Image();
+      preload.src = links[(current + step + links.length) % links.length].href;
+    });
+  });
+
   function show(index) {
     current = (index + links.length) % links.length;
     const thumbnail = links[current].querySelector('img');
     image.src = links[current].href;
     image.alt = thumbnail.alt;
-    caption.textContent = `${current + 1} / ${links.length} · ${thumbnail.alt}`;
+    const description = links[current].closest('figure')?.querySelector('figcaption')?.textContent || thumbnail.alt;
+    caption.textContent = `${current + 1} / ${links.length} · ${description}`;
   }
 
   galleries.forEach(gallery => {
@@ -76,7 +92,7 @@
     swipe = null;
     document.documentElement.classList.remove('viewer-open');
     document.documentElement.style.removeProperty('--viewer-scroll');
-    window.scrollTo(0, scrollPosition);
+    window.scrollTo({ top: scrollPosition, behavior: 'instant' });
     opener?.focus({ preventScroll: true });
   });
 

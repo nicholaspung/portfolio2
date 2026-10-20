@@ -32,9 +32,20 @@ for (const file of pages) {
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${file}: expected one h1`);
   assert.match(html, /<meta name="description"/);
   assert.match(html, /<main id="main">/);
+  assert.match(html, /<script src="\/theme.js"><\/script>[\s\S]*?<link rel="stylesheet" href="\/style.css">/, `${file}: apply saved appearance before styles load`);
   assert.doesNotMatch(html, /@import/i);
   for (const [tag] of html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)) {
-    assert.equal(file, resolve(root, 'index.html'), 'Only the homepage needs browser JavaScript');
+    if (tag === '<script src="/theme.js"></script>') continue;
+    if (tag === '<script src="/data-desktop.js" defer></script>') {
+      assert.equal(file, resolve(root, 'blog/data-desktop/index.html'), 'App showcase belongs on the Data Desktop case study');
+      continue;
+    }
+    if (tag === '<script src="/section-nav.js" defer></script>') {
+      assert.match(html, /<nav class="section-nav"/, `${file}: section navigation script needs navigation markup`);
+      assert.ok([resolve(root, 'index.html'), resolve(root, 'about/index.html')].includes(file) || (file.startsWith(resolve(root, 'blog') + '/') && file !== resolve(root, 'blog/index.html')), 'Section navigation belongs on Portfolio, About, and blog articles');
+      continue;
+    }
+    assert.ok(file === resolve(root, 'index.html') || (file.startsWith(resolve(root, 'blog') + '/') && file !== resolve(root, 'blog/index.html')), 'Screenshot viewing belongs on the homepage and blog articles');
     assert.equal(tag, '<script src="/gallery.js" defer></script>', 'Use the local gallery enhancement only');
   }
   for (const [tag] of html.matchAll(/<img\b[^>]*>/gi)) {
@@ -57,10 +68,12 @@ const stylesheets = [...home.toString().matchAll(/<link rel="stylesheet" href="(
 const css = Buffer.concat(await Promise.all(stylesheets.map(href => readFile(resolve(root, '.' + href)))));
 const gallery = await readFile(resolve(root, 'gallery.js'));
 assert.ok(gallery.length < 5000, 'Gallery JavaScript exceeds 5 kB budget');
-// Includes three featured project cards, seven iPhone screenshots, and viewer styling.
-assert.ok(home.length + css.length < 21000, 'Homepage + CSS exceeds 21 kB budget');
+const theme = await readFile(resolve(root, 'theme.js'));
+assert.ok(theme.length < 4000, 'Theme JavaScript exceeds 4 kB budget');
+// Includes featured galleries, viewer styling, appearance controls, and section navigation.
+assert.ok(home.length + css.length < 34000, 'Homepage + CSS exceeds 34 kB budget');
 // Keep the fixed site small while allowing each editable case study room for a full article.
-assert.ok(total < 110000, 'Fixed site assets exceed 110 kB budget');
+assert.ok(total < 126000, 'Fixed site assets exceed 126 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');
 console.log(`Checked ${pages.length} HTML pages and all local links.`);
 console.log(`Fixed site assets: ${total} bytes. Editable case studies: ${caseStudyTotal} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);

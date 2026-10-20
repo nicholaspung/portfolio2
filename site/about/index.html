@@ -11,21 +11,38 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.nicholaspung.com/about/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/theme.js"></script>
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/section-nav.css">
+<script src="/section-nav.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="wordmark" href="/">Nicholas Pung<span>Software developer</span></a><nav aria-label="Main navigation"><a href="/">Portfolio</a><a href="/about/" aria-current="page">About</a><a href="/blog/">Blog</a></nav></header>
+
+<nav class="section-nav" aria-label="On this page">
+<button class="section-nav-toggle" type="button" aria-expanded="false" aria-controls="section-links" hidden>☰ <span>Sections</span></button>
+<div class="section-nav-links" id="section-links">
+<a href="#about-me"><span>About me</span></a>
+<a href="#background"><span>Background</span></a>
+<a href="#recommended-podcast-listens"><span>Podcasts</span></a>
+</div>
+</nav>
 <main id="main">
 <article class="prose">
 <section class="content-section" aria-labelledby="about-me">
-<h1 id="about-me">About me</h1>
-<p>I'm Nicholas Pung, a full-stack software developer who dabbles with nutrition and philosophy. I aim to build applications that are useful for myself and others, with great user experiences and interfaces that make them satisfying to use.</p>
-<p>I’m working on my own personal projects and exploring how AI agents can create and maintain codebases, from an idea to a production environment. Currently, I maintain a private project I call “Productivity.” It brings the applications I want to build into one repository so I can maintain my projects easily. To learn more about this project, <a href="/blog/productivity/">read the case study</a>.</p>
-<p>Outside of my personal project, I’m looking for an opportunity to work on something I find meaningful and feel excited to move forward. A previous attempt was “Yummy Recs,” where the goal was to create a local recommendation network for restaurant menu items. I don’t really trust public review sites, and I believe everyone has their own taste preferences: an item one person rates poorly might be a favorite for someone else. To learn more about how this attempt went, <a href="/blog/yummy-recs/">read the case study</a>.</p>
+<h1 id="about-me" tabindex="-1">About me</h1>
+<p>I’m Nicholas Pung, a full-stack software developer and former AWS Solutions Architect. I build practical applications with thoughtful interfaces.</p>
+<p>At AWS, I specialized in Amazon Connect and helped enterprise customers plan contact center migrations. I later helped build an internal demo platform that grew from about 100 users to more than 8,000 across AWS and its partners, with over 36,000 demo plays by the time I left. I developed, reviewed, or supported approximately 90% of the demos on the platform.</p>
+<p>Today, I’m exploring how AI agents can help build and maintain applications from idea to production. My main project, <a href="/blog/productivity/">Productivity</a>, brings my personal applications into one repository. I also built <a href="/blog/yummy-recs/">Yummy Recs</a>, a recommendation network for restaurant dishes based on individual tastes.</p>
+</section>
+<section class="content-section" aria-labelledby="background">
+<h2 id="background" tabindex="-1">Background</h2>
+<p>My path into software began at Impact Theory, where I built a Python tool using the Google Maps API to find comic book retailers. That project led me to pursue software development in 2019, followed by roles at Vegas.com, Blueberry Medical, and AWS.</p>
+<p>Outside software, I’m interested in nutrition and philosophy. I’m looking for an opportunity to build useful products with a team whose work I find meaningful.</p>
 </section>
 <section class="content-section" aria-labelledby="recommended-podcast-listens">
-<h2 id="recommended-podcast-listens">Recommended podcast listens</h2>
+<h2 id="recommended-podcast-listens" tabindex="-1">Recommended podcast listens</h2>
 <ul>
 <li><a href="https://fs.blog/knowledge-project/">The Knowledge Project with Shane Parrish</a></li>
 <li><a href="https://allin.com/">All-In Podcast</a></li>
@@ -33,14 +50,6 @@
 <li><a href="https://chriswillx.com/podcast/">Modern Wisdom</a></li>
 <li><a href="https://tim.blog/podcast/">The Tim Ferriss Show</a></li>
 </ul>
-</section>
-<section class="content-section" aria-labelledby="background">
-<h2 id="background">Background</h2><p>I was fortunate enough to work under <a href="https://www.youtube.com/tombilyeu">Tom Bilyeu from Impact Theory</a>, where I learned and ingrained in my head that developing skills is one of the most important aspects in life to provide value to others.</p>
-<p>So when Impact Theory decided to join the comic book industry, we had to get a list of comic book retailers so that we could sell our comic books to them. To save some costs, I decided to use Python and Google Maps API to create an address scraper to grab all comic book retail store addresses. After building the address scraper, I remembered my old passion in learning how to code, and decided to pursue becoming a Software Developer full time in late April 2019.</p>
-<p>I joined Lambda School in 2019, a remote coding bootcamp where I learned the coding and programming fundamentals that helped me land my first job as a Web Developer at Vegas.com. From there, I went on to a Software Engineering Internship at Blueberry Medical, followed by a full-time position at Amazon Web Services as a Solutions Architect (SA).</p>
-<p>At AWS, I became a SA specializing in Amazon Connect, AWS’s cloud contact center service, which launched in 2017. I joined when the product was about five years old and gained experience working with enterprise companies, helping decision makers migrate their contact centers from legacy providers to Amazon Connect.</p>
-<p>After getting promoted, I wanted to return to working with code. I was fortunate to join the team building demos for Amazon Connect SAs. We created an internal demo platform: a website housing clickthrough demos that gave SAs a consistent way to showcase the product to prospective customers.</p>
-<p>We scaled the platform from about 100 Amazon Connect SAs to more than 8,000 users across AWS and AWS partners, with over 36,000 demo plays by the time I left the company. I created or helped bring approximately 90% of the demos on the platform across the finish line, whether through development, review, or support.</p>
 </section>
 </article>
 </main>
