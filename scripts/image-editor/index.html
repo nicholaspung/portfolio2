@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Blur screenshots | Local workspace</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/write/writer.css"><link rel="stylesheet" href="/image-editor/editor.css">
+<script src="/image-editor/editor.js" defer></script>
+</head>
+<body>
+<header class="writer-header"><div><p class="eyebrow">Local workspace</p><h1>Blur your screenshots.</h1><p>Draw boxes over details you want to hide, then save to your website.</p></div><a href="/">Back to portfolio ↗</a></header>
+<main id="main">
+<div class="action-bar"><label class="image-label" for="image-path">Screenshot<select id="image-path" disabled></select></label><div class="save-actions"><span id="state">Loading…</span><button id="save" class="primary" disabled>Save to website</button></div></div>
+<p id="feedback" role="status" aria-live="polite">Loading local images…</p>
+<div class="blur-workspace">
+<aside aria-label="Blur controls">
+<label for="strength">Blur strength <output id="strength-value" for="strength">24 px</output></label><input id="strength" type="range" min="8" max="80" step="1" value="24" disabled>
+<label for="quality">Export quality <output id="quality-value" for="quality">92%</output></label><input id="quality" type="range" min="50" max="100" step="1" value="92" disabled>
+<p class="hint">JPEG / WebP only. If a save exceeds 500 kB, lower this value.</p>
+<div class="box-heading"><h2>Blur boxes <span id="count">0</span></h2><button id="undo" disabled>Undo</button></div>
+<p class="hint">Drag across the image to add a box. Remove a box below to reveal that area again.</p>
+<ol id="boxes" aria-label="Blur boxes"></ol>
+<button id="clear" disabled>Clear all boxes</button>
+<details class="coordinates"><summary>Add a box with coordinates</summary><p class="hint">Pixels in the original image. An alternative to dragging.</p><form id="box-form"><div class="coordinate-grid"><label>X<input id="box-x" type="number" min="0" value="0" required disabled></label><label>Y<input id="box-y" type="number" min="0" value="0" required disabled></label><label>Width<input id="box-width" type="number" min="4" value="100" required disabled></label><label>Height<input id="box-height" type="number" min="4" value="100" required disabled></label></div><button id="add-box" type="submit" disabled>Add box</button></form></details>
+<p class="hint">Save replaces the actual image at the same URL. Every page using it gets the blurred version. Originals and editable boxes stay in <code>.local/images/</code>.</p>
+<p class="hint">Review the result at full size before publishing. Use a large box and strong blur for text you want to hide.</p>
+</aside>
+<section aria-label="Screenshot preview"><div class="preview-heading"><p id="dimensions">Choose an image</p><div><button id="zoom" aria-pressed="false" disabled>Actual size</button><a id="saved-image" target="_blank" rel="noopener" hidden>Open saved image ↗</a></div></div><div id="stage" class="blur-stage"><canvas id="canvas" aria-label="Screenshot preview. Drag to draw blur boxes, or use the coordinate form." hidden></canvas><p id="empty">No screenshot selected.</p></div><label class="checkbox preview-toggle"><input id="outlines" type="checkbox" checked> Show box outlines <span>Outlines are never saved.</span></label></section>
+</div>
+<noscript>This local editor needs JavaScript.</noscript>
+</main>
+</body>
+</html>

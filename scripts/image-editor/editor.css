@@ -1,0 +1,12 @@
+.image-label{width:min(100%,520px);margin:0}.image-label select{margin-top:5px}
+.blur-workspace{display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;align-items:start}
+.blur-workspace aside{border:1px solid var(--line);border-radius:8px;padding:20px}
+.blur-workspace input[type=range]{padding:0;margin:12px 0 20px;accent-color:var(--accent)}
+.blur-workspace output{float:right;color:var(--muted);font-weight:400}
+.box-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px}.box-heading h2{margin:0;font-size:1rem}.box-heading span{color:var(--muted);font-weight:400}
+#boxes{padding-left:24px;font-size:.8rem;margin:16px 0}#boxes li{padding:5px 0}#boxes button{font-size:.75rem;padding:3px 8px;margin-left:10px}
+.coordinates{margin-top:22px;font-size:.8rem}.coordinates summary{cursor:pointer}.coordinate-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.coordinate-grid input{min-width:0}
+#dimensions{font-size:.8rem;color:var(--muted);margin:0}.blur-stage{max-height:78vh;overflow:auto;background:var(--line);padding:18px;border-radius:8px;overscroll-behavior:contain}
+#canvas{display:block;width:auto;height:auto;max-width:100%;max-height:72vh;margin:0 auto;touch-action:none;cursor:crosshair;background:white;box-shadow:0 2px 14px #0002}
+.blur-stage.actual #canvas{max-width:none;max-height:none}.preview-toggle{margin-top:16px;font-size:.8rem}.preview-toggle span{font-size:.75rem}
+@media(max-width:850px){.blur-workspace{grid-template-columns:1fr;gap:24px}.blur-workspace aside{order:2}.blur-stage{max-height:65vh}#canvas{max-height:60vh}.preview-heading>div{justify-content:start}.preview-toggle{flex-wrap:wrap}}

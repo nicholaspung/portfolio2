@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Desktop | Case Study | Nicholas Pung</title>
+<meta name="description" content="A desktop application for collecting personal data to do analytical work on afterwards. It was initially created to try out Claude 3.5 Sonnet and its coding capabilities. It ended up becoming the first version of a forever project to develop applications for my personal usage.">
+<link rel="canonical" href="https://www.nicholaspung.com/blog/data-desktop/">
+<meta property="og:title" content="Data Desktop | Case Study | Nicholas Pung">
+<meta property="og:description" content="A desktop application for collecting personal data to do analytical work on afterwards. It was initially created to try out Claude 3.5 Sonnet and its coding capabilities. It ended up becoming the first version of a forever project to develop applications for my personal usage.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.nicholaspung.com/blog/data-desktop/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/gallery.css">
+<link rel="stylesheet" href="/data-desktop.css">
+<link rel="stylesheet" href="/section-nav.css">
+<script src="/data-desktop.js" defer></script>
+<script src="/section-nav.js" defer></script>
+<script src="/gallery.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="wordmark" href="/">Nicholas Pung<span>Software developer</span></a><nav aria-label="Main navigation"><a href="/">Portfolio</a><a href="/about/">About</a><a href="/blog/" aria-current="page">Blog</a></nav></header>
+<nav class="section-nav" aria-label="Article sections" data-article hidden>
+<button class="section-nav-toggle" type="button" aria-expanded="false" aria-controls="section-links" hidden>☰ <span>Sections</span></button>
+<div class="section-nav-links" id="section-links"></div>
+</nav>
+<main id="main">
+<article class="prose"><header><a href="/blog/">← All posts</a><h1>Data Desktop | Case Study</h1><!-- case-study:status --><!-- /case-study:status --></header>
+<div class="content-section">
+<!-- case-study:body -->
+<h2>The problem</h2><p>I've always thought that it was weird that corporations were able to make money off of user data. All the freemium software collecting data to sell ads? Great for the economy, however it created a thought for me about what would it be like if the user were able to collect their own data and sell that data themselves. There have been multiple projects to do this, and unfortunately, I don't trust any of them, which is also the problem with the solution I came up with, so I made the scope of the project smaller and turned it into: how can I collect my own personal data so that I can take action on that data for the benefit of myself.</p><h2>Building the solution</h2><h3>Technologies used: React, JS, HTML, shadcn, Go, Wails</h3><p>Claude 3.5 Sonnet had initially released along with Claude Code and I wanted to get hands on with seeing how I could use LLMs to create coding projects since this was the first model to do a basic job coding and helping users code less of the same thing.</p><p>The decisions that I made for the architecture were the following:<br></p><p></p><ul><li>React for the frontend</li><li>Go for the backend</li><li>Wails for the desktop packaging to be able to use the desktop app on Windows, MacOS, and Linux</li></ul><p>The overall idea is that the desktop app would have many different applications inside it so the user could enable/disable specific apps they were using at any point in time.</p><p>For the frontend, it was easy to create a way to separate applications visually, and creating reusable components is something that I was experienced with, so once I was able to create a few reusable patterns, I was able to get Claude 3.5 Sonnet to help me with a lot of the rest. Of course, the design capabilities weren't that great so I had a lot of hand in making the user experience and user interface the way that would make me use the application on a daily basis with no friction.</p><p>For the backend, I wondered if it was possible to create a way where the user wouldn't need to make migrations on the database, so the goal was to try to make as flexible of a way for a user to create different tables in the database via the desktop app. This resulted in a database with 2 tables: a table that declared all the different types of &quot;columns&quot; that an application &quot;database table&quot; could have, and the other table where the data would live with all the &quot;columns&quot; declared by the first table along with the data that it would be saved in. In terms of performance, the database lookups would spend ~1-2 seconds loading due to it having to be &quot;filtered&quot; out, but with how much data I ended up storing (not that much), it never became an issue.</p><p>And so, with these architectural decisions made, I started creating application that I would use on a daily basis.</p><p></p><h2>The result</h2>
+<p>Along with Claude 3.5 Sonnet and eventually Claude 4 Sonnet, I was able to create the desktop application that had multiple different individual applications itself:</p>
+<figure><a href="/images/data-desktop/01-dashboard-light.png"><img src="/images/data-desktop/01-dashboard-light.png" alt="Dashboard in light mode with daily tracking, todos, time tracking, and journaling" width="1280" height="672" loading="lazy"></a><figcaption>The Data Desktop dashboard in light mode.</figcaption></figure>
+<figure><a href="/images/data-desktop/02-dashboard-dark.png"><img src="/images/data-desktop/02-dashboard-dark.png" alt="Dashboard in dark mode with daily tracking, todos, time tracking, and journaling" width="1280" height="672" loading="lazy"></a><figcaption>The same dashboard in dark mode.</figcaption></figure>
+<h3>Time Tracker</h3>
+<p>Allows user to track time, similar to the company Toggl Track.</p>
+<figure><a href="/images/data-desktop/08-time-tracker-list-light.png"><img src="/images/data-desktop/08-time-tracker-list-light.png" alt="Time Tracker with a timer and a categorized list of recorded activities" width="1280" height="800" loading="lazy"></a><figcaption>Time Tracker: recording activities and reviewing tracked time.</figcaption></figure>
+<h3>Daily Tracker</h3>
+<p>Allows user to log whether or not the activity was done along with more information, similar to Habitica &quot;dailies&quot;.</p>
+<figure><a href="/images/data-desktop/13-daily-tracking-calendar-light.png"><img src="/images/data-desktop/13-daily-tracking-calendar-light.png" alt="Daily Tracking calendar with scheduled metrics, goals, and daily value inputs" width="1280" height="800" loading="lazy"></a><figcaption>Daily Tracking: a calendar view of scheduled metrics and daily goals.</figcaption></figure>
+<h3>Todos</h3>
+<p>Allows user to have a todo list with description, categorization, and deadlines.</p>
+<figure><a href="/images/data-desktop/07-todos-light.png"><img src="/images/data-desktop/07-todos-light.png" alt="Todos and deadlines with priority filters, completion totals, and overdue tasks" width="1280" height="800" loading="lazy"></a><figcaption>Todos: task priorities, deadlines, and overdue items.</figcaption></figure>
+<h3>Metric Logger</h3>
+<p>Allows user to create metrics to log and track, connected with Daily Tracker and Metric Calendar.</p>
+<figure><a href="/images/data-desktop/06-metric-logger-light.png"><img src="/images/data-desktop/06-metric-logger-light.png" alt="Metric Logger with daily values for deep work, energy, exercise, reading, and weight" width="1280" height="800" loading="lazy"></a><figcaption>Metric Logger: recording daily values for personal metrics.</figcaption></figure>
+<h3>Metric Calendar</h3>
+<p>Allows user to view metrics tracked on a calendar specific view. Used for analytics.</p>
+<figure><a href="/images/data-desktop/16-metric-calendar-light.webp"><img src="/images/data-desktop/16-metric-calendar-light.webp" alt="Metric Calendar with selected habits and a monthly view of recorded metrics" width="1280" height="800" loading="lazy"></a><figcaption>Metric Calendar: selected habits and daily metric logs in a monthly view.</figcaption></figure>
+<h3>Experiments</h3>
+<p>Allows a user to create an experiment and connect metrics to track progress, resulting in whether or not the metrics had any effect for the experiment done.</p>
+<figure><a href="/images/data-desktop/15-experiments-overview-light.png"><img src="/images/data-desktop/15-experiments-overview-light.png" alt="Experiments overview with an intermittent fasting experiment, progress, and goals" width="1280" height="800" loading="lazy"></a><figcaption>Experiments: tracking progress and goals for an intermittent fasting experiment.</figcaption></figure>
+<h3>Journaling</h3>
+<p>Allows user to have a gratitude journal to write, creativity journal to track progress, questions to see how the user changes their answer over time, and affirmations for the user to read.</p>
+<figure><a href="/images/data-desktop/09-gratitude-journal-history-light.png"><img src="/images/data-desktop/09-gratitude-journal-history-light.png" alt="Gratitude Journal history with dated entries and daily reflections" width="1280" height="800" loading="lazy"></a><figcaption>Gratitude Journal: reviewing previous entries and daily reflections.</figcaption></figure>
+<h3>Daily Journal</h3>
+<p>Allows user to write down whatever they want for the day. Tried connecting it with Metric Logger and Todos to be able to automatically track those items when the user just goes through their daily writing, but results were not as good as expected.</p>
+<figure><a href="/images/data-desktop/17-daily-journal-preview-light.webp"><img src="/images/data-desktop/17-daily-journal-preview-light.webp" alt="Daily Journal preview with a formatted entry and linked daily records" width="1280" height="800" loading="lazy"></a><figcaption>Daily Journal: a formatted entry preview alongside the day’s records.</figcaption></figure>
+<h3>Time Planner</h3>
+<p>Allows user to figure out how they want to plan and visualize for the week.</p>
+<figure><a href="/images/data-desktop/18-time-planner-weekly-schedule-light.webp"><img src="/images/data-desktop/18-time-planner-weekly-schedule-light.webp" alt="Weekly Time Planner with scheduled activities and a category allocation summary" width="1280" height="800" loading="lazy"></a><figcaption>Time Planner: a weekly schedule and time allocation by category.</figcaption></figure>
+<h3>People CRM</h3>
+<p>Allows user to track activities for people in their life. Kind of like a sales CRM, but for personal relationships.</p>
+<figure><a href="/images/data-desktop/05-people-crm-light.png"><img src="/images/data-desktop/05-people-crm-light.png" alt="People CRM contact cards with relationship tags and birthdays" width="1280" height="800" loading="lazy"></a><figcaption>People CRM: contacts organized with relationship tags and birthdays.</figcaption></figure>
+<figure><a href="/images/data-desktop/12-people-crm-contact-detail-light.png"><img src="/images/data-desktop/12-people-crm-contact-detail-light.png" alt="People CRM contact detail with basic information, quick actions, and activity statistics" width="1280" height="800" loading="lazy"></a><figcaption>People CRM: contact information, quick actions, and activity statistics.</figcaption></figure>
+<h3>Body Measurements</h3>
+<p>Allows the user to track specific body measurements over time. Includes all the weight data that I've tracked over the years.</p>
+<figure><a href="/images/data-desktop/19-body-measurements-overview-light.webp"><img src="/images/data-desktop/19-body-measurements-overview-light.webp" alt="Body Measurements overview with recent weight and measurement records" width="1280" height="800" loading="lazy"></a><figcaption>Body Measurements: recent weight and measurements across eight measurement types.</figcaption></figure>
+<figure><a href="/images/data-desktop/20-body-measurements-weight-trends-light.webp"><img src="/images/data-desktop/20-body-measurements-weight-trends-light.webp" alt="Body Measurements chart showing body weight changes over time" width="1280" height="800" loading="lazy"></a><figcaption>Body Measurements: body weight trends over time.</figcaption></figure>
+<h3>Wealth</h3>
+<p>Allows user to manually track their financial activity, for things they buy and also their net worth over time.</p>
+<figure><a href="/images/data-desktop/03-wealth-transactions-light.png"><img src="/images/data-desktop/03-wealth-transactions-light.png" alt="Wealth transaction summary with income, expenses, and a monthly cash flow chart" width="1280" height="800" loading="lazy"></a><figcaption>Wealth: income, expenses, and monthly cash flow.</figcaption></figure>
+<figure><a href="/images/data-desktop/11-wealth-balance-trends-light.png"><img src="/images/data-desktop/11-wealth-balance-trends-light.png" alt="Wealth balance trends chart comparing savings and checking accounts over time" width="1280" height="800" loading="lazy"></a><figcaption>Wealth: savings and checking account balances over time.</figcaption></figure>
+<h3>Files</h3>
+<p>Allows user to save files specific to their financial and health areas.</p>
+
+<h3>DEXA Scans</h3>
+<p>Allows user to save their DEXA scan output into their own application and create their own visualizations.</p>
+<figure><a href="/images/data-desktop/14-dexa-composition-trends-light.png"><img src="/images/data-desktop/14-dexa-composition-trends-light.png" alt="DEXA Scan Tracker showing lean and fat tissue composition trends" width="1280" height="800" loading="lazy"></a><figcaption>DEXA Scan Tracker: lean and fat tissue composition trends.</figcaption></figure>
+<h3>Bloodwork</h3>
+<p>Allows user to save their own blood work data aggregated from multiple providers into one view</p>
+<figure><a href="/images/data-desktop/21-bloodwork-lipid-trends-light.webp"><img src="/images/data-desktop/21-bloodwork-lipid-trends-light.webp" alt="Bloodwork Tracker with lipid trends and reference ranges using fictional sample data" width="1280" height="880" loading="lazy"></a><figcaption>Bloodwork: lipid trends and reference ranges using fictional sample data.</figcaption></figure>
+<figure><a href="/images/data-desktop/22-bloodwork-historical-test-light.webp"><img src="/images/data-desktop/22-bloodwork-historical-test-light.webp" alt="Bloodwork Tracker showing historical lipid test values using fictional sample data" width="1280" height="880" loading="lazy"></a><figcaption>Bloodwork: historical lipid test values using fictional sample data.</figcaption></figure>
+<h2>What I learned</h2><p>By working on this project, I became more proficient at &quot;vibe coding&quot;, utilizing this also at work when we were allowed to. In addition, it showed me that I was able to now be able to use LLMs to create projects and products that I could envision, and steering the model to create the visualizations and features that I wanted to was as fun as coding it out myself. Overall, this project laid the foundation of what would become the &quot;Productivity&quot; project.</p>
+<!-- /case-study:body -->
+</div>
+</article><nav class="post-nav" aria-label="More posts"><a rel="prev" href="/blog/yummy-recs/">← Yummy Recs | Case Study</a><a rel="next" href="/blog/productivity-hub/">Productivity Hub | Case Study →</a></nav>
+</main>
+<footer class="site-footer"><span>© Nicholas Pung</span><nav aria-label="Social links"><a href="https://github.com/nicholaspung">GitHub</a><a href="https://www.linkedin.com/in/nicholas-pung">LinkedIn</a></nav></footer>
+</body>
+</html>
