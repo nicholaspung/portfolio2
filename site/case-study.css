@@ -14,6 +14,11 @@
 .prose .app-images figure{margin:0;min-width:0}
 .app-images img{width:100%;border-radius:6px;background:var(--bg)}
 .app-card:not(:has(figure)){display:flex;flex-direction:column;justify-content:center}
+.app-showcase-portrait .app-card{flex-basis:min(320px,90%)}
+.app-showcase-portrait .app-images{grid-template-columns:1fr}
+.app-showcase-portrait img,.app-showcase-portrait video{display:block;width:100%;height:auto;border-radius:6px;background:var(--bg)}
+.app-showcase-portrait .app-card figure{margin:0}
+.app-showcase-portrait .app-card figcaption{font-size:.8rem}
 @media(min-width:1101px){body:has(.app-showcase)>.section-nav{left:8px}}
 @media(max-width:600px){.app-showcase{width:calc(100vw - 40px);padding:16px}.app-toolbar{align-items:flex-start;flex-direction:column;gap:12px}.app-track{gap:12px}.app-card{flex-basis:94%;padding:20px}.app-images{grid-template-columns:1fr}.app-images figcaption{font-size:.75rem}}
 @media print{.app-showcase{left:0;transform:none;width:auto;padding:0}.app-toolbar{display:none}.app-track{display:block;overflow:visible}.app-card{margin:20px 0;break-inside:avoid}}

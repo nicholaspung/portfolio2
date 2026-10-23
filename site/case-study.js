@@ -1,5 +1,9 @@
 (() => {
   const body = document.querySelector('article.prose .content-section');
+  if (!body) return;
+  const article = body.closest('article');
+  const project = article.dataset.showcase || 'Data Desktop';
+  const item = article.dataset.showcaseItem || 'app';
   const result = [...body.querySelectorAll('h2')].find(heading => heading.textContent.trim() === 'The result');
   if (!result) return;
   const content = [];
@@ -8,18 +12,18 @@
   if (firstApp < 0) return;
 
   const showcase = document.createElement('section');
-  showcase.className = 'app-showcase';
+  showcase.className = 'app-showcase' + (item === 'feature' ? ' app-showcase-portrait' : '');
   showcase.setAttribute('data-section-nav-exclude', '');
-  showcase.setAttribute('aria-label', 'Explore the Data Desktop apps');
+  showcase.setAttribute('aria-label', `Explore the ${project} ${item}s`);
   const toolbar = document.createElement('div');
   toolbar.className = 'app-toolbar';
-  toolbar.innerHTML = '<p>Swipe or scroll to explore the apps · Select a screenshot to enlarge</p><div class="app-navigation"><span aria-live="polite"></span><button type="button" aria-label="Previous app" aria-controls="data-desktop-apps">←</button><button type="button" aria-label="Next app" aria-controls="data-desktop-apps">→</button></div>';
+  toolbar.innerHTML = `<p>Swipe or scroll to explore the ${item}s · Select a screenshot to enlarge</p><div class="app-navigation"><span aria-live="polite"></span><button type="button" aria-label="Previous ${item}" aria-controls="case-study-showcase">←</button><button type="button" aria-label="Next ${item}" aria-controls="case-study-showcase">→</button></div>`;
   const track = document.createElement('div');
-  track.id = 'data-desktop-apps';
+  track.id = 'case-study-showcase';
   track.className = 'app-track';
   track.tabIndex = 0;
   track.setAttribute('role', 'region');
-  track.setAttribute('aria-label', 'Data Desktop apps');
+  track.setAttribute('aria-label', `${project} ${item}s`);
   showcase.append(toolbar, track);
 
   function card(heading) {
@@ -51,9 +55,13 @@
     images.append(...figures);
     panel.append(images);
   });
+  const walkthroughs = article.querySelector('[aria-labelledby="onboarding-walkthroughs"]');
+  if (walkthroughs) {
+    walkthroughs.classList.remove('content-section');
+    showcase.after(walkthroughs);
+  }
   const [previous, next] = toolbar.querySelectorAll('button');
   const status = toolbar.querySelector('span');
-  let current = -1;
   let pending = false;
   function update() {
     pending = false;
@@ -63,19 +71,19 @@
       return Math.max(0, Math.min(bounds.right, rect.right) - Math.max(bounds.left, rect.left));
     });
     const index = visible.indexOf(Math.max(...visible));
-    if (index === current) return;
-    current = index;
     cards.forEach((panel, i) => panel.dataset.active = String(i === index));
-    previous.disabled = index === 0;
-    next.disabled = index === cards.length - 1;
-    status.textContent = `${index + 1} / ${cards.length}`;
+    previous.disabled = track.scrollLeft <= 1;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    const first = visible.findIndex(width => width > 1) + 1;
+    const last = visible.findLastIndex(width => width > 1) + 1;
+    status.textContent = `${first === last ? first : `${first}–${last}`} / ${cards.length}`;
   }
   function schedule() {
     if (!pending) { pending = true; requestAnimationFrame(update); }
   }
   function move(direction) {
-    const index = Math.max(0, Math.min(cards.length - 1, current + direction));
-    track.scrollTo({ left: cards[index].offsetLeft, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    const step = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
+    track.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   }
   previous.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
