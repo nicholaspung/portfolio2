@@ -1,0 +1,43 @@
+/* Compact homepage with a shared project card grid. */
+.portfolio-home .site-header{padding:26px 0 22px;margin-bottom:20px}
+.portfolio-home .intro h1{font-size:2rem;margin:0 0 10px}
+.portfolio-home .intro p{max-width:64ch;margin:0;font-size:1rem;line-height:1.65}
+.portfolio-home .intro a{white-space:nowrap}
+.portfolio-home .section-heading{margin-top:0;padding-bottom:12px}
+.portfolio-home .project{display:flex;flex-direction:column;padding:20px;margin:0;min-width:0}
+.portfolio-home .project:nth-child(even){background:var(--surface-strong)}
+.portfolio-home .project-heading{display:block;margin-bottom:10px}
+.portfolio-home .project-heading h3{margin-bottom:4px}
+.portfolio-home .project p{font-size:.9rem;line-height:1.65;margin-bottom:12px}
+.portfolio-home .project .tech{font-size:.75rem}
+.portfolio-home .project .links{font-size:.8rem;gap:8px 18px;margin-top:auto}
+.portfolio-home .screenshots{display:flex;flex-direction:column;min-width:0;margin:0}
+.portfolio-home .screenshots legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.portfolio-home .screenshot-slides{order:-1}
+.portfolio-home .screenshot-controls{justify-content:center;gap:6px;margin:8px 0 0}
+.portfolio-home .screenshot-controls label{padding:5px 9px;font-size:.7rem;min-height:32px}
+.portfolio-home .screenshot-placeholder{aspect-ratio:16/10;background:var(--surface)}
+.portfolio-home .screenshot-placeholder>span:first-child{display:none}
+.portfolio-home .screenshot-placeholder .meta{font-size:.7rem}
+.portfolio-home .screenshot-slide img{aspect-ratio:16/10;object-fit:contain;background:var(--bg)}
+.portfolio-home .site-footer{margin-top:36px}
+.portfolio-home{max-width:940px}
+.portfolio-home .intro{margin:24px 0}
+.portfolio-home .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:20px 0 0}
+.portfolio-home .featured .screenshots{margin-bottom:16px}
+.portfolio-home .featured .screenshot-placeholder,.portfolio-home .featured .screenshot-slide img{aspect-ratio:2/1}
+.portfolio-home .project-copy{display:flex;flex-direction:column;flex:1}
+.phone-gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:8px;margin-bottom:6px}
+.phone-gallery a{flex:none;scroll-snap-align:start;border-radius:6px}
+.phone-gallery img{display:block;height:260px;width:auto;border-radius:6px}
+.desktop-gallery a{flex:0 0 100%}
+.desktop-gallery img{width:100%;height:auto;aspect-ratio:8/5;object-fit:contain;background:var(--bg)}
+.phone-gallery:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.portfolio-home .project .gallery-note{font-size:.7rem;color:var(--muted);margin-bottom:16px}
+@media(max-width:768px){
+  .portfolio-home{padding:0 20px}
+  .portfolio-home .site-header{margin-bottom:16px}
+  .portfolio-home .intro h1{font-size:1.65rem;margin-bottom:10px}
+  .portfolio-home .project-grid{grid-template-columns:1fr;gap:16px}
+  .portfolio-home .featured .screenshot-placeholder,.portfolio-home .featured .screenshot-slide img{aspect-ratio:5/2}
+}

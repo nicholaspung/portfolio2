@@ -1,0 +1,24 @@
+.app-showcase{position:relative;left:50%;transform:translateX(-50%);width:calc(100vw - 64px);max-width:1440px;margin:32px 0;background:var(--surface);border-radius:12px;padding:24px}
+.app-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.app-toolbar p{margin:0;color:var(--muted);font-size:.8rem}
+.app-navigation{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.app-navigation span{min-width:48px;text-align:center;font-size:.8rem;color:var(--muted)}
+.app-navigation button{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--bg);color:var(--ink);font:20px system-ui;cursor:pointer}
+.app-navigation button:disabled{opacity:.35;cursor:default}
+.app-navigation button:focus-visible,.app-track:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.app-track{position:relative;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:16px}
+.app-card{flex:0 0 min(640px,90%);min-width:0;padding:24px;background:var(--surface-alt);border-radius:8px;scroll-snap-align:start;scroll-margin-inline:0;overflow-wrap:break-word}
+.prose .app-card h3{margin:0 0 12px}
+.app-card p{font-size:.95rem}
+.app-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.prose .app-images figure{margin:0;min-width:0}
+.app-images img{width:100%;border-radius:6px;background:var(--bg)}
+.app-card:not(:has(figure)){display:flex;flex-direction:column;justify-content:center}
+.app-showcase-portrait .app-card{flex-basis:min(320px,90%)}
+.app-showcase-portrait .app-images{grid-template-columns:1fr}
+.app-showcase-portrait img,.app-showcase-portrait video{display:block;width:100%;height:auto;border-radius:6px;background:var(--bg)}
+.app-showcase-portrait .app-card figure{margin:0}
+.app-showcase-portrait .app-card figcaption{font-size:.8rem}
+@media(min-width:1101px){body:has(.app-showcase)>.section-nav{left:8px}}
+@media(max-width:600px){.app-showcase{width:calc(100vw - 40px);padding:16px}.app-toolbar{align-items:flex-start;flex-direction:column;gap:12px}.app-track{gap:12px}.app-card{flex-basis:94%;padding:20px}.app-images{grid-template-columns:1fr}.app-images figcaption{font-size:.75rem}}
+@media print{.app-showcase{left:0;transform:none;width:auto;padding:0}.app-toolbar{display:none}.app-track{display:block;overflow:visible}.app-card{margin:20px 0;break-inside:avoid}}
