@@ -17,7 +17,6 @@
   showcase.setAttribute('aria-label', `Explore the ${project} ${item}s`);
   const toolbar = document.createElement('div');
   toolbar.className = 'app-toolbar';
-  toolbar.innerHTML = `<p>Swipe or scroll to explore the ${item}s · Select a screenshot to enlarge</p><div class="app-navigation"><span aria-live="polite"></span><button type="button" aria-label="Previous ${item}" aria-controls="case-study-showcase">←</button><button type="button" aria-label="Next ${item}" aria-controls="case-study-showcase">→</button></div>`;
   const track = document.createElement('div');
   track.id = 'case-study-showcase';
   track.className = 'app-track';
@@ -60,34 +59,43 @@
     walkthroughs.classList.remove('content-section');
     showcase.after(walkthroughs);
   }
-  const [previous, next] = toolbar.querySelectorAll('button');
-  const status = toolbar.querySelector('span');
-  let pending = false;
-  function update() {
-    pending = false;
-    const bounds = track.getBoundingClientRect();
-    const visible = cards.map(panel => {
-      const rect = panel.getBoundingClientRect();
-      return Math.max(0, Math.min(bounds.right, rect.right) - Math.max(bounds.left, rect.left));
-    });
-    const index = visible.indexOf(Math.max(...visible));
-    cards.forEach((panel, i) => panel.dataset.active = String(i === index));
-    previous.disabled = track.scrollLeft <= 1;
-    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
-    const first = visible.findIndex(width => width > 1) + 1;
-    const last = visible.findLastIndex(width => width > 1) + 1;
-    status.textContent = `${first === last ? first : `${first}–${last}`} / ${cards.length}`;
+  function enhance(gallery, item) {
+    const track = gallery.querySelector('.app-track');
+    const cards = [...track.children];
+    const toolbar = gallery.querySelector('.app-toolbar');
+    const action = item === 'walkthrough' ? 'Select a video to play or pause' : 'Select a screenshot to enlarge';
+    toolbar.innerHTML = `<p>Swipe or scroll to explore the ${item}s · ${action}</p><div class="app-navigation"><span aria-live="polite"></span><button type="button" aria-label="Previous ${item}" aria-controls="${track.id}">←</button><button type="button" aria-label="Next ${item}" aria-controls="${track.id}">→</button></div>`;
+    const [previous, next] = toolbar.querySelectorAll('button');
+    const status = toolbar.querySelector('span');
+    let pending = false;
+    function update() {
+      pending = false;
+      const bounds = track.getBoundingClientRect();
+      const visible = cards.map(panel => {
+        const rect = panel.getBoundingClientRect();
+        return Math.max(0, Math.min(bounds.right, rect.right) - Math.max(bounds.left, rect.left));
+      });
+      const index = visible.indexOf(Math.max(...visible));
+      cards.forEach((panel, i) => panel.dataset.active = String(i === index));
+      previous.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      const first = visible.findIndex(width => width > 1) + 1;
+      const last = visible.findLastIndex(width => width > 1) + 1;
+      status.textContent = `${first === last ? first : `${first}–${last}`} / ${cards.length}`;
+    }
+    function schedule() {
+      if (!pending) { pending = true; requestAnimationFrame(update); }
+    }
+    function move(direction) {
+      const step = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
+      track.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
   }
-  function schedule() {
-    if (!pending) { pending = true; requestAnimationFrame(update); }
-  }
-  function move(direction) {
-    const step = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
-    track.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  }
-  previous.addEventListener('click', () => move(-1));
-  next.addEventListener('click', () => move(1));
-  track.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', schedule);
-  update();
+  enhance(showcase, item);
+  if (walkthroughs) enhance(walkthroughs.querySelector('.app-showcase'), 'walkthrough');
 })();
