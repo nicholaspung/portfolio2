@@ -11,21 +11,11 @@
 .portfolio-home .project p{font-size:.9rem;line-height:1.65;margin-bottom:12px}
 .portfolio-home .project .tech{font-size:.75rem}
 .portfolio-home .project .links{font-size:.8rem;gap:8px 18px;margin-top:auto}
-.portfolio-home .screenshots{display:flex;flex-direction:column;min-width:0;margin:0}
-.portfolio-home .screenshots legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.portfolio-home .screenshot-slides{order:-1}
-.portfolio-home .screenshot-controls{justify-content:center;gap:6px;margin:8px 0 0}
-.portfolio-home .screenshot-controls label{padding:5px 9px;font-size:.7rem;min-height:32px}
-.portfolio-home .screenshot-placeholder{aspect-ratio:16/10;background:var(--surface)}
-.portfolio-home .screenshot-placeholder>span:first-child{display:none}
-.portfolio-home .screenshot-placeholder .meta{font-size:.7rem}
-.portfolio-home .screenshot-slide img{aspect-ratio:16/10;object-fit:contain;background:var(--bg)}
 .portfolio-home .site-footer{margin-top:36px}
 .portfolio-home{max-width:940px}
 .portfolio-home .intro{margin:24px 0}
 .portfolio-home .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:20px 0 0}
-.portfolio-home .featured .screenshots{margin-bottom:16px}
-.portfolio-home .featured .screenshot-placeholder,.portfolio-home .featured .screenshot-slide img{aspect-ratio:2/1}
+.portfolio-home #productivity{align-self:start}
 .portfolio-home .project-copy{display:flex;flex-direction:column;flex:1}
 .phone-gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:8px;margin-bottom:6px}
 .phone-gallery a{flex:none;scroll-snap-align:start;border-radius:6px}
@@ -39,5 +29,4 @@
   .portfolio-home .site-header{margin-bottom:16px}
   .portfolio-home .intro h1{font-size:1.65rem;margin-bottom:10px}
   .portfolio-home .project-grid{grid-template-columns:1fr;gap:16px}
-  .portfolio-home .featured .screenshot-placeholder,.portfolio-home .featured .screenshot-slide img{aspect-ratio:5/2}
 }

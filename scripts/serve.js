@@ -7,7 +7,7 @@ import { createImageEditor } from './image-editor-server.js';
 
 const production = process.argv.includes('--production');
 const root = fileURLToPath(new URL(production ? '../public/' : '../site/', import.meta.url));
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.xml': 'application/xml', '.txt': 'text/plain' };
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.mp4': 'video/mp4', '.xml': 'application/xml', '.txt': 'text/plain' };
 const port = Number(process.env.PORT || (production ? 8001 : 8000));
 const writer = !production && createWriter({ root, backupRoot: fileURLToPath(new URL('../.local/writer/backups/', import.meta.url)) });
 const imageEditor = !production && createImageEditor({ root, localRoot: fileURLToPath(new URL('../.local/images/', import.meta.url)) });
