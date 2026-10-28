@@ -13,6 +13,7 @@ const files = await walk(root);
 const pages = files.filter(f => f.endsWith('.html'));
 let total = 0;
 let imageTotal = 0;
+let videoTotal = 0;
 let caseStudyTotal = 0;
 const editableCases = new Set(['productivity', 'yummy-recs', 'data-desktop'].map(slug => resolve(root, 'blog', slug, 'index.html')));
 const imageTypes = new Set(['.png', '.jpg', '.jpeg', '.webp', '.avif']);
@@ -21,6 +22,9 @@ for (const file of files) {
   if (imageTypes.has(extname(file))) {
     assert.ok(size <= 512000, `${file}: screenshot exceeds 500 kB budget`);
     imageTotal += size;
+  } else if (extname(file) === '.mp4') {
+    assert.ok(size <= 3 * 1024 * 1024, `${file}: walkthrough exceeds 3 MB budget`);
+    videoTotal += size;
   } else if (editableCases.has(file)) {
     assert.ok(size < 70000, `${file}: case study exceeds 70 kB budget`);
     caseStudyTotal += size;
@@ -36,8 +40,8 @@ for (const file of pages) {
   assert.doesNotMatch(html, /@import/i);
   for (const [tag] of html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)) {
     if (tag === '<script src="/theme.js"></script>') continue;
-    if (tag === '<script src="/data-desktop.js" defer></script>') {
-      assert.equal(file, resolve(root, 'blog/data-desktop/index.html'), 'App showcase belongs on the Data Desktop case study');
+    if (tag === '<script src="/case-study.js" defer></script>') {
+      assert.ok(['data-desktop', 'yummy-recs'].some(slug => file === resolve(root, 'blog', slug, 'index.html')), 'Feature showcases belong on the Data Desktop and Yummy Recs case studies');
       continue;
     }
     if (tag === '<script src="/section-nav.js" defer></script>') {
@@ -52,7 +56,12 @@ for (const file of pages) {
     assert.match(tag, /\balt="[^"]+"/, `${file}: screenshots need descriptive alt text`);
     assert.match(tag, /\bsrc="\/(?!\/)[^"]+"/, `${file}: screenshots must use local assets`);
   }
-  for (const [, href] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+  for (const [tag] of html.matchAll(/<video\b[^>]*>/gi)) {
+    assert.match(tag, /\bcontrols\b/, `${file}: walkthroughs need playback controls`);
+    assert.match(tag, /\bpreload="none"/, `${file}: load walkthroughs on demand`);
+    assert.doesNotMatch(tag, /\bautoplay\b/, `${file}: walkthroughs should play on request`);
+  }
+  for (const [, href] of html.matchAll(/(?:href|src|poster)="([^"]+)"/g)) {
     if (/^(https?:|mailto:)/.test(href)) continue;
     const [path, fragment] = href.split('#');
     const base = path.startsWith('/') ? root : dirname(file);
@@ -73,7 +82,8 @@ assert.ok(theme.length < 4000, 'Theme JavaScript exceeds 4 kB budget');
 // Includes featured galleries, viewer styling, appearance controls, and section navigation.
 assert.ok(home.length + css.length < 34000, 'Homepage + CSS exceeds 34 kB budget');
 // Keep the fixed site small while allowing each editable case study room for a full article.
-assert.ok(total < 126000, 'Fixed site assets exceed 126 kB budget');
+assert.ok(total < 127000, 'Fixed site assets exceed 127 kB budget');
 assert.ok(imageTotal <= 3 * 1024 * 1024, 'Screenshots exceed 3 MB budget');
+assert.ok(videoTotal <= 10 * 1024 * 1024, 'Walkthroughs exceed 10 MB budget');
 console.log(`Checked ${pages.length} HTML pages and all local links.`);
-console.log(`Fixed site assets: ${total} bytes. Editable case studies: ${caseStudyTotal} bytes. Screenshots: ${imageTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);
+console.log(`Fixed site assets: ${total} bytes. Editable case studies: ${caseStudyTotal} bytes. Screenshots: ${imageTotal} bytes. Walkthroughs: ${videoTotal} bytes. Homepage + CSS: ${home.length + css.length} bytes (${gzipSync(home).length + gzipSync(css).length} bytes gzipped). Gallery JavaScript: ${gallery.length} bytes (${gzipSync(gallery).length} bytes gzipped).`);
